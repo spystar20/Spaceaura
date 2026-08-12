@@ -6,25 +6,24 @@ import SplitType from 'split-type';
 gsap.registerPlugin(ScrollTrigger)
 
 onMounted(()=>{
-    const split = new SplitType('.title',{
+    const tl = gsap.timeline({scrollTrigger:{
+        start:'top 70%',end:'top 10%',trigger:'.container',scrub:true,markers:true
+    }})
+const split = new SplitType('.title',{
     types:'words'
 })
-const tl = gsap.timeline({ScrollTrigger:{
-trigger:'.container',scrub:true,start:'top top', end:'bottom center'
-}})
-tl.from('.paragraph',{
-    xPercent:60,opacity:0,ease:'power3',duration:0.5
+const splitPara = new SplitType('.para',{
+    types:'lines'
 })
-to(split.words,{
-    color:'#ffff',stagger:1,ease:'power2',scrollTrigger:{
-       trigger:split.words,
-        start:"top 70%",
-        end:"bottom center",
-        scrub:true
-    }
-}
+tl.from(splitPara.lines,{
+        x:-30,ease:'power2.inOut',stagger:0.08,duration:2,rotateX:80,opacity:0
 
-)})
+})
+.from(split.words,{
+        x:-30,ease:'power2.inOut',stagger:0.08,duration:2,rotateX:80,opacity:0
+})
+ })
+
 </script>
 <template>
  <div class="md:p-5 p-2 flex  bg-white relative z-10  flex-col md:flex-row gap-8 container ">
@@ -55,10 +54,10 @@ to(split.words,{
 
                 <div
                     class="flex flex-col items-start justify-center gap-3 font-body rounded-2xl md:rounded-4xl bg-linear-120 from-black to-main text-white p-5">
-                    <h6 class="md:rounded-full rounded-xl border px-3 py-1 text-xs md:text-sm paragraph ">aesthetic</h6>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis labore doloribus recusandae </p>
-                    <h2 class="font-heading capitalize text-3xl md:text-4xl font-medium title">
-                        into a gallery of elegance
+                    <h6 class="md:rounded-full rounded-xl border px-3 py-1 text-xs md:text-sm  ">aesthetic</h6>
+                    <p class="para">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis labore doloribus recusandae </p>
+                    <h2 class="font-heading  text-3xl md:text-4xl font-medium title ">
+    Into A Gallery Of Elegance
                     </h2>
                 </div>
                 <div style="background-image: url(https://i.pinimg.com/1200x/ac/61/19/ac61196521cec3df1e94987c0b176b79.jpg);"
@@ -70,7 +69,8 @@ to(split.words,{
         </div>
 </template>
 <style scoped>
-.title{
-color: #666;
+.title,
+.para {
+  perspective: 800px;
 }
 </style>
