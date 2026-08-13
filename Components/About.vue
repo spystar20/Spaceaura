@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 onMounted(()=>{
     const tl = gsap.timeline({scrollTrigger:{
-        start:'top 70%',end:'top 10%',trigger:'.container',scrub:true,markers:true
+        start:'top 50%',end:'top 20%',trigger:'.container',scrub:true,markers:true
     }})
 const split = new SplitType('.title',{
     types:'words'
@@ -15,7 +15,12 @@ const split = new SplitType('.title',{
 const splitPara = new SplitType('.para',{
     types:'lines'
 })
-tl.from(splitPara.lines,{
+tl.to(".img-grid span",{
+scale:0,stagger:{
+    amount:1,from:'random',
+},duration:1,ease:"power3.in"
+})
+.from(splitPara.lines,{
         x:-30,ease:'power2.inOut',stagger:0.08,duration:2,rotateX:80,opacity:0
 
 })
@@ -30,9 +35,12 @@ tl.from(splitPara.lines,{
             <!-- col-1 -->
             <div class="flex-7 ">
                 <div style="background-image: url(https://i.pinimg.com/1200x/5d/2f/b8/5d2fb87f8c6aacb1d930e01e401f8a05.jpg
-);" class="bg-black rounded-2xl md:rounded-4xl bg-center bg-cover  h-screen flex flex-col items-start  justify-end ">
+);" class="bg-black rounded-2xl md:rounded-4xl bg-center bg-cover  h-screen flex flex-col items-start  justify-end relative overflow-hidden">
+<div class=" absolute inset-0 grid grid-cols-4 grid-rows-4 img-grid">
+<span v-for="i in 16" class="bg-white " :key="i"></span>
+</div>
                     <div
-                        class="flex flex-col items-start justify-start rounded-4xl text-black font-poppins capitalize ">
+                        class="flex flex-col items-start justify-start rounded-4xl text-black font-poppins capitalize z-40">
                         <span class="pr-6 pt-4 rounded-tr-lg  bg-white">
                             <h6 class="rounded-full border px-3 py-1 text-sm  ">gorgeous interior</h6>
                         </span>
