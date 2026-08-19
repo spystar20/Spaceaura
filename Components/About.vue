@@ -4,10 +4,10 @@ import {  onMounted } from 'vue';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
 gsap.registerPlugin(ScrollTrigger)
-
+// pin:true,pinSpacing:true
 onMounted(()=>{
     const tl = gsap.timeline({scrollTrigger:{
-        start:'top center',end:"+=700",trigger:'.container',scrub:true
+        start:'top top',end:"+=700",trigger:'.container',scrub:true,
     }})
 const split = new SplitType('.title',{
     types:'words'
@@ -105,7 +105,7 @@ tl.from(".img-strips div",{
             <div class="flex-3 grid grid-rows-2 gap-6">
 
                 <div
-                    class="flex flex-col items-start justify-center gap-3 font-body rounded-2xl md:rounded-4xl bg-linear-120 from-black to-main text-white p-5 text-container">
+                    class="flex flex-col items-start justify-end gap-3 font-body rounded-2xl md:rounded-4xl bg-linear-120 from-black to-main text-white p-5 text-container">
                     <h6 class="md:rounded-full rounded-xl border px-3 py-1 text-xs md:text-sm  ">aesthetic</h6>
                     <p class="para">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis labore doloribus recusandae </p>
                     <h2 class="font-heading  text-3xl md:text-4xl font-medium title ">
