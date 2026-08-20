@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger)
 // pin:true,pinSpacing:true
 onMounted(()=>{
     const tl = gsap.timeline({scrollTrigger:{
-        start:'top top',end:"+=700",trigger:'.container',scrub:true,
+        start:'top top',end:"+=900",trigger:'.container',scrub:true,pin:true,pinSpacer:true
     }})
 const split = new SplitType('.title',{
     types:'words'
