@@ -32,10 +32,10 @@ onMounted(async() => {
 
 </script>
 <template>
-<div class="w-full hero  flex items-center justify-center relative h-screen rounded-2xl md:rounded-4xl px-2 md:px-5 box-border ">
+<div class="w-full hero  flex items-center justify-center relative  rounded-2xl md:rounded-4xl px-2 md:px-5 box-border ">
             <div 
-                class="bg-black w-full h-screen rounded-2xl md:rounded-4xl  bg-cover bg-center overflow-hidden">
-                <img src="https://i.pinimg.com/1200x/21/f5/9c/21f59c5b923c8f866d7da4a87dda0b4d.jpg" class="hero-img object-cover w-full h-screen  overflow-hidden" alt="">
+                class="bg-black w-full  rounded-2xl md:rounded-4xl  bg-cover bg-center overflow-hidden">
+                <img src="https://i.pinimg.com/1200x/21/f5/9c/21f59c5b923c8f866d7da4a87dda0b4d.jpg" class="hero-img object-cover w-full md:h-[87vh] h-[86vh] overflow-hidden" alt="">
                 <div class=" absolute  flex justify-center  items-center inset-x-2 md:inset-x-5 inset-y-0 bg-black/40 rounded-2xl md:rounded-4xl ">
                     <div class="overflow-hidden  text-center flex flex-col items-center gap-2 md:gap-5  justify-center text-white  ">
                         <div class="overflow-hidden ">
