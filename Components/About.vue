@@ -5,8 +5,9 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
 gsap.registerPlugin(ScrollTrigger)
 // pin:true,pinSpacing:true
+
 onMounted(()=>{
-    let mm = gsap.matchMedia()
+const mm = gsap.matchMedia()
     // animation for laptop
  mm.add("(min-width: 768px)",()=>{
       const tl = gsap.timeline({scrollTrigger:{
@@ -18,6 +19,7 @@ const split = new SplitType('.title',{
 const splitPara = new SplitType('.para',{
     types:'lines'
 })
+
 tl.from(".img-strips div",{
   xPercent: -100,
   stagger: 0.1,
@@ -90,6 +92,7 @@ const split = new SplitType('.title',{
 const splitPara = new SplitType('.para',{
     types:'lines'
 })
+
 tl.from(".img-strips div",{
   xPercent: -100,
   stagger: 0.1,
@@ -145,7 +148,6 @@ tl.from(".img-strips div",{
 
 </script>
 <template>
-    
  <div class="md:p-5 p-2 grid md:grid-cols-[7fr_3fr]  bg-white relative z-10 gap-4 md:gap-6 container ">
             <!-- col-1 -->
             <div>

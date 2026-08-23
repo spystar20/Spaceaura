@@ -64,13 +64,12 @@ onMounted(() => {
             </div>
                 <!-- Material & Texture -->
                 <!-- Lighting & Atmosphere -->
-                 <div class="grid grid-cols-1 md:grid-cols-2" >
+                 <div class="grid grid-cols-1 md:grid-cols-2 justify-items-center " >
 
                                         <img :src="approach" class="opacity-95 brightness-75 w-full image" alt="">
-
-                <div class="flex flex-col gap-5 items-center justify-center mt-5 md:px-12 md:w-[85%]">
+    <div class="flex flex-col gap-5 justify-center items-center md:pr-6">
                     <div
-                        class="feature flex flex-row gap-4 bg-linear-to-t from-main to-black  hover:bg-black rounded-xl p-2.5 md:p-5 group">
+                        class="feature flex flex-row gap-4 bg-linear-to-t from-main to-black  hover:bg-black rounded-xl p-2.5 md:p-5 group w-full md:max-w-8/12">
                         <div class=" transition-all duration-300 ease-out">
                             <img src="https://i.pinimg.com/1200x/87/3f/89/873f8928e27c13c03bb5862951ddb09a.jpg"
                                 class="rounded-lg aspect-square  transition-all duration-300 ease-out w-50 group-hover:scale-110 hover:transform-border border-2"
@@ -84,7 +83,7 @@ onMounted(() => {
                         </div>
                     </div>
 
-                    <div class="feature flex flex-row-reverse gap-4 bg-black/85 rounded-xl p-2.5 md:p-5 ">
+                    <div class="feature flex flex-row-reverse gap-4 bg-black/85 rounded-xl p-2.5 md:p-5  w-full md:max-w-8/12 ">
                         <div>
                             <img src="https://i.pinimg.com/1200x/87/3f/89/873f8928e27c13c03bb5862951ddb09a.jpg"
                                 class="rounded-lg aspect-sqaure w-50" alt="">
@@ -96,7 +95,7 @@ onMounted(() => {
                                 Laboriosam quas consequuntur cumque?</p>
                         </div>
                     </div>
-                    <div class="feature flex gap-4 bg-black/85 rounded-xl p-2.5 md:p-5 ">
+                    <div class="feature flex gap-4 bg-black/85 rounded-xl p-2.5 md:p-5  w-full md:max-w-8/12">
                         <div>
                             <img src="https://i.pinimg.com/736x/ae/68/b6/ae68b669e2b0ce0174ab9a70980f4cf9.jpg"
                                 class="rounded-lg aspect-sqaure w-50" alt="">
@@ -109,6 +108,7 @@ onMounted(() => {
                         </div>
                     </div>
                 </div>
+                
                 </div>
             </div>
 
