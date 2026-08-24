@@ -44,8 +44,8 @@ onMounted(() => {
 
 </script>
 <template>
-    <div class="md:p-5 p-2 approach-container">
-            <div class=" w-full rounded-3xl bg-gray-100 md:px-6 px-2 py-5 md:py-8 min-h-[calc(100vh-40px)] ">
+    <div class="md:p-5 p-2 approach-container  ">
+            <div class=" w-full rounded-3xl bg-gray-100 md:px-6 px-2 py-5 md:py-8 min-h-[calc(100vh-120px)]">
                 
              
                 <div class="flex flex-col md:flex-row gap-3 md:gap-12 justify-between items-end md:items-start w-full pb-5">
