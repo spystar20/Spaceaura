@@ -6,6 +6,8 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger)
 onMounted(() => {
+    const mm = gsap.matchMedia()
+    mm.add("(min-width: 768px)",()=>{
     const tl = gsap.timeline({
         scrollTrigger: {
             trigger: '.approach-container',
@@ -39,13 +41,52 @@ onMounted(() => {
             ease: 'none'
         }
     )
+})
+mm.add("(max-width:767px)",()=>{
+     const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.approach-container',
+            start: 'top center',
+            end: 'bottom top',
+            scrub: true,
+           
+        }
+    })
+// tl.from('.image',{
+// scale:1.2,yPercent:30,opacity:0.5,duration:1
+// })
+    tl.fromTo('.image', {
+        scale: 1.2,
+        yPercent: 30,
+        opacity:0
+    }, {
+        scale: 1,
+        yPercent: 0,
+        opacity:1,
+        ease: 'none'
+    },0)
+    .fromTo('.approach-title',{yPercent:100,opacity:0},{yPercent:0,opacity:1},0)
+    .fromTo('.approach-description',{yPercent:100,opacity:0},{yPercent:0,opacity:1},0)
+        .fromTo('.feature',
+        {
+            y: 60,scale:0.9
+        },
+        {
+            y: 0,
+            scale:1,
+            stagger: 0.1,
+            ease: 'none'
+        }
+    )
+    
+})
 
 })
 
 </script>
 <template>
     <div class="md:p-5 p-2 approach-container  ">
-            <div class=" w-full rounded-3xl bg-gray-100 md:px-6 px-2 py-5 md:py-8 min-h-[calc(100vh-120px)]">
+            <div class=" w-full rounded-3xl bg-gray-100 md:px-6 px-2 py-5 md:py-8 min-h-[calc(100vh-40px)]">
                 
              
                 <div class="flex flex-col md:flex-row gap-3 md:gap-12 justify-between items-end md:items-start w-full pb-5">
@@ -66,13 +107,13 @@ onMounted(() => {
                 <!-- Lighting & Atmosphere -->
                  <div class="grid grid-cols-1 md:grid-cols-2 justify-items-center " >
 
-                                        <img :src="approach" class="opacity-95 brightness-75 w-full image" alt="">
+                                        <img :src="approach" class="opacity-95 brightness-75  image w-full md:w-11/12" alt="">
     <div class="flex flex-col gap-5 justify-center items-center md:pr-6">
                     <div
                         class="feature flex flex-row gap-4 bg-linear-to-t from-main to-black  hover:bg-black rounded-xl p-2.5 md:p-5 group w-full md:max-w-8/12">
                         <div class=" transition-all duration-300 ease-out">
                             <img src="https://i.pinimg.com/1200x/87/3f/89/873f8928e27c13c03bb5862951ddb09a.jpg"
-                                class="rounded-lg aspect-square  transition-all duration-300 ease-out w-50 group-hover:scale-110 hover:transform-border border-2"
+                                class="rounded-lg aspect-sqaure  transition-all duration-300 ease-out  object-cover md:w-50 group-hover:scale-110 hover:transform-border border-2 "
                                 alt="">
 
                         </div>
