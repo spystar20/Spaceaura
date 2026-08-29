@@ -7,13 +7,13 @@ defineProps({
 </script>
 <template>
 
-    <div  class="h-[300px] md:h-[400px] relative group overflow-hidden rounded-3xl box-border">
+    <div  class=" relative group overflow-hidden rounded-3xl box-border">
         <div  :style='{ backgroundImage: `url(${project.img})` }'
             class="w-full bg-cover bg-center rounded-3xl h-full group-hover:scale-105 transition transform duration-500 ease-in projectCard-image">
         </div>
         <div
             class=" w-full h-auto  md:hover:bg-black/30 ease-in duration-300 transition-all rounded-2xl bg-linear-to-t from-black/90  md:from-0% via-black/40  md:via-25% to-transparent md:to-30% absolute inset-0 flex items-end justify-between p-2 lg:py-3 lg:px-6">
-            <div class="transform md:translate-y-[65%]  md:group-hover:translate-y-0 transition duration-300 ">
+            <div class="transform md:translate-y-[65%]  md:group-hover:translate-y-0 transition duration-300 projectCard-textContainer">
                 <div class="flex  justify-between items-center ">
                     <h1 class="text-2xl lg:text-3xl font-projects font-semibold  text-white">{{ project.title }}</h1>
                     <span class="  text-black bg-white rounded-full p-1 lg:p-2 ">

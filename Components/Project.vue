@@ -8,6 +8,7 @@ import { Col1 ,Col2} from '../src/data/Project'
 import { ArrowUpRight } from 'lucide-vue-next';
 ;
 onMounted(()=>{
+    console.log(document.querySelectorAll(".projectCard-image"))
     let mm = gsap.matchMedia()
     mm.add("(min-width:768px)",()=>{
 const tl = gsap.timeline({scrollTrigger:{start:"top bottom",end:"bottom bottom",scrub:true,trigger:".project-container",markers:true}})
@@ -18,8 +19,8 @@ tl.fromTo(".project-heading",{
     yPercent:100,ease:"power3.in"
 },{yPercent:0},"<")
 
-.fromTo(".projectCard-image",{backgroundPositionY:100,},{backgroundPositionY:0})
-
+.fromTo(".projectCard-image",{backgroundPosition:"center 50%"},{backgroundPosition:"center 0%",ease:"power2"})
+// .fromTo(".projectCard-textContainer",{y:100},{y:120})
     })
     
     
@@ -45,7 +46,7 @@ tl.fromTo(".project-heading",{
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-5 py-10 w-full min-h-screen">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-5 py-5 w-full min-h-screen">
                 <div class="grid grid-cols-1  md:grid-cols-1 h-full gap-3 ">
                     <ProjectCard v-for="item in Col1" :key="item.id" :project="item" />
                 </div>
@@ -59,11 +60,11 @@ tl.fromTo(".project-heading",{
                             class=" w-full h-auto hover:bg-black/30 ease-in duration-300 transition-all rounded-2xl bg-linear-to-t from-black/90  md:from-0% via-black/40  md:via-25% to-transparent md:to-30% absolute inset-0 flex items-end justify-center  md:py-3 p-2 ">
                             <div class="transform md:translate-y-1/2 md:group-hover:translate-y-0 transition duration-300">
                                 <div class="flex  justify-between items-center w-full">
-                                    <h1 class="text-2xl md:text-3xl font-projects font-semibold  text-white"> Velvet Dusk Interiors
+                                    <h1 class="text-2xl md:text-3xl font-projects font-medium  text-white"> Velvet Dusk Interiors
                                     </h1>
-                                    <span class="  text-black bg-white rounded-full p-1 md:p-2 ">
+                                    <span class="  text-black bg-white rounded-full p-1 md:p-1.5">
                                         <ArrowUpRight
-                                            class="hover:scale-125 transition-all ease-in duration-200 cursor-pointer" />
+                                            class="hover:scale-105  transition-all ease-in duration-200 cursor-pointer" />
                                     </span>
                                 </div>
                                 <div class="md:opacity-0 md:group-hover:opacity-100 transition duration-300 md:mt-3">
@@ -88,7 +89,7 @@ tl.fromTo(".project-heading",{
                     <div class="flex-4 flex flex-col md:flex-row  gap-5">
                         <div class=" w-full relative group overflow-hidden rounded-3xl">
                             <div style="background-image: url(https://i.pinimg.com/736x/1e/8b/5e/1e8b5e3b25be07a2114d891185a2263d.jpg);"
-                                class="w-full bg-cover projectCard-image bg-center rounded-3xl h-[300px] md:h-full group-hover:scale-105 transition transform duration-500 ease-in">
+                                class="w-full bg-cover projectCard-image bg-center rounded-3xl h-[300px] md:h-full group-hover:scale-105 transition transform duration-500 ease-in ">
                             </div>
                             <div
                                 class=" w-full h-auto hover:bg-black/30 ease-in duration-300 transition-all rounded-2xl bg-linear-to-t from-black/90 md:from-0% via-black/40 md:via-25% to-transparent md:to-30% absolute inset-0 flex items-end justify-between md:py-3 p-2 md:px-6">
@@ -121,7 +122,7 @@ tl.fromTo(".project-heading",{
                         </div>
                         <div class="w-full relative group overflow-hidden rounded-3xl">
                             <div style="background-image: url(https://i.pinimg.com/736x/e4/fe/01/e4fe01b5a543853d5e88e67e0ea0a27a.jpg);"
-                                class="w-full bg-cover projectCard-image bg-center rounded-3xl h-[300px] md:h-full group-hover:scale-105 transition transform duration-500 ease-in  projectCard-image">
+                                class="w-full bg-cover bg-center rounded-3xl h-[300px] md:h-full group-hover:scale-105 transition transform duration-500 ease-in  projectCard-image">
                             </div>
                             <div
                                 class=" w-full h-auto hover:bg-black/30 ease-in duration-300 transition-all rounded-2xl bg-linear-to-t from-black/90 md:from-0% via-black/40 md:via-25% to-transparent md:to-30% absolute inset-0 flex items-end justify-between p-2 md:py-3 md:px-6">
