@@ -12,6 +12,7 @@ onMounted(()=>{
     let mm = gsap.matchMedia()
     mm.add("(min-width:768px)",()=>{
 const tl = gsap.timeline({scrollTrigger:{start:"top bottom",end:"bottom bottom",scrub:true,trigger:".project-container",markers:true}})
+const cards = gsap.utils.toArray(".projectCard-image");
 tl.fromTo(".project-heading",{
     yPercent:100,ease:"power3.in"
 },{yPercent:0})
@@ -19,8 +20,18 @@ tl.fromTo(".project-heading",{
     yPercent:100,ease:"power3.in"
 },{yPercent:0},"<")
 
-.fromTo(".projectCard-image",{backgroundPosition:"center 50%"},{backgroundPosition:"center 0%",ease:"power2"})
-// .fromTo(".projectCard-textContainer",{y:100},{y:120})
+.fromTo(
+    cards,
+    {
+        y: 15,
+        scale: 1.15
+    },
+    {
+        y: 0,
+        scale: 1,
+        ease: "none"
+    }
+);
     })
     
     
