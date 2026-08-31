@@ -12,7 +12,7 @@ onMounted(() => {
         scrollTrigger: {
             trigger: '.approach-container',
             start: 'top top',
-            end: '+=500%',
+            end: '+=400%',
             scrub: true,
             pin: true,
             pinSpacing: true,

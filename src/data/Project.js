@@ -29,3 +29,9 @@ export const Col2 = [
         height: '60%'
     }
 ]
+// src/data/Project.js
+export const CenterCol = [
+  { id: 'c1', title: 'Velvet Dusk Interiors', img: 'https://i.pinimg.com/1200x/a3/1f/d3/a31fd30764e7b6c3652bbcf30be59db9.jpg' },
+  { id: 'c2', title: 'Coal & Concrete', img: 'https://i.pinimg.com/1200x/3a/1e/97/3a1e97fff437486bec8367080ccf3333.jpg' },
+  { id: 'c3', title: 'The Ember House', img: 'https://i.pinimg.com/736x/e4/fe/01/e4fe01b5a543853d5e88e67e0ea0a27a.jpg' },
+];
