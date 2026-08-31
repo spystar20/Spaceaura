@@ -2,35 +2,38 @@
 import { ArrowUpRight } from 'lucide-vue-next';
 
 defineProps({
-    project: Object
-})
+  project: Object
+});
 </script>
+
 <template>
+  <div class="relative group overflow-hidden rounded-3xl w-full h-full min-h-[280px]">
+    <!-- Background Image -->
+    <div 
+      :style="{ backgroundImage: `url(${project.img})` }" 
+      class="absolute inset-0 w-full h-full bg-cover bg-center projectCard-image transition-transform duration-700 ease-out group-hover:scale-105"
+    ></div>
 
-  
-<div class="relative group overflow-hidden rounded-3xl box-border">
-    <div :style="{ backgroundImage: `url(${project.img})` }" class="absolute inset-0 w-full h-full bg-cover bg-center rounded-3xl group-hover:scale-105 transition transform duration-500 ease-in projectCard-image projectCard-inner"></div>
-    <div class="w-full h-auto md:hover:bg-black/30 ease-in duration-300 transition-all rounded-2xl bg-linear-to-t from-black/90 md:from-0% via-black/40 md:via-25% to-transparent md:to-30% absolute inset-0 flex items-end justify-between p-2 lg:py-3 lg:px-6">
-        <div class="transform md:translate-y-[65%] md:group-hover:translate-y-0 transition duration-300 projectCard-textContainer">
-            <div class="flex justify-between items-center">
-                <h1 class="text-2xl lg:text-3xl font-projects font-semibold text-white">{{ project.title }}</h1>
-                <span class="text-black bg-white rounded-full p-1 lg:p-2">
-                    <ArrowUpRight class="hover:scale-125 transition-all ease-in duration-200 cursor-pointer" />
-                </span>
-            </div>
-            <div class="md:opacity-0 md:group-hover:opacity-100 transition duration-300 md:mt-3">
-                <p class="font-body text-white text-xs md:text-sm py-2 text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque magni alias ipsam?</p>
-                <div class="flex items-center justify-center gap-3 py-2 w-full">
-                    <button class="px-4 py-0.5 text-white border border-white rounded-full capitalize hover:bg-white/5 hover:scale-95 ease-in transition-all duration-100 cursor-pointer">view</button>
-                    <button class="px-4 py-0.5 text-white border border-white rounded-full capitalize hover:bg-white/5 hover:scale-95 ease-in transition-all duration-100 cursor-pointer">contact</button>
-                    <button class="px-4 py-0.5 text-white border border-white rounded-full capitalize hover:bg-white/5 hover:scale-95 ease-in transition-all duration-100 cursor-pointer">learn</button>
-                </div>
-            </div>
+    <!-- Gradient Overlay & Reveal Container -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-5 flex flex-col justify-end transition-colors duration-300 group-hover:bg-black/40">
+      <div class="flex justify-between items-center w-full">
+        <h1 class="text-xl lg:text-2xl font-semibold text-white">{{ project.title }}</h1>
+        <span class="text-black bg-white rounded-full p-1.5 hover:scale-110 transition-transform cursor-pointer">
+          <ArrowUpRight class="w-4 h-4" />
+        </span>
+      </div>
+
+      <!-- CSS Height & Opacity Expansion on Hover -->
+      <div class="max-h-0 opacity-0 group-hover:max-h-36 group-hover:opacity-100 transition-all duration-500 ease-in-out overflow-hidden">
+        <p class="font-body text-gray-300 text-xs py-2">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque magni alias ipsam?
+        </p>
+        <div class="flex items-center gap-2 pt-1">
+          <button class="px-3 py-1 text-xs text-white border border-white/70 rounded-full hover:bg-white hover:text-black transition-all">View</button>
+          <button class="px-3 py-1 text-xs text-white border border-white/70 rounded-full hover:bg-white hover:text-black transition-all">Contact</button>
         </div>
+      </div>
     </div>
-</div>
-
-
+  </div>
 </template>
-
 <style scoped></style>

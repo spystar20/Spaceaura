@@ -11,7 +11,7 @@ onMounted(()=>{
     console.log(document.querySelectorAll(".projectCard-image"))
     let mm = gsap.matchMedia()
     mm.add("(min-width:768px)",()=>{
-const tl = gsap.timeline({scrollTrigger:{start:"top bottom",end:"bottom bottom",scrub:true,trigger:".project-container",markers:true}})
+const tl = gsap.timeline({scrollTrigger:{start:"top top",end:"500%",scrub:true,trigger:".project-container",markers:true,pin:true,pinSpacing:true}})
 const cards = gsap.utils.toArray(".projectCard-image");
 tl.fromTo(".project-heading",{
     yPercent:100,ease:"power3.in"
@@ -23,12 +23,11 @@ tl.fromTo(".project-heading",{
 .fromTo(
     cards,
     {
-        y: 15,
-        scale: 1.15
+        backgroundPosition:"center 120%"
     },
     {
-        y: 0,
-        scale: 1,
+    backgroundPosition:"center 50%",
+    
         ease: "none"
     }
 );
