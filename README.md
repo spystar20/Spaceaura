@@ -1,6 +1,8 @@
 # SpaceAura
 
-A cinematic, space-inspired landing page built with **Vue.js, GSAP, and Tailwind CSS**, focused on immersive visual design, smooth motion, and scroll-based interactions.
+SpaceAura is a modern interior design showcase featuring curated residential spaces and contemporary room aesthetics.
+
+The landing page presents different interior concepts through immersive imagery, structured layouts, and smooth GSAP-powered animations. The project focuses on combining visual storytelling with interactive motion to create a refined browsing experience.
 
 SpaceAura is a creative frontend project built to explore modern web animation techniques and create a dynamic browsing experience.
 
