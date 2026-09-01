@@ -70,7 +70,7 @@ tl.from(".img-strips div",{
 },'<')
 }) 
 // animation for mobile
-mm.add("(max-width: 767px)", () => {
+mm.add("(min-width: 767px)", () => {
       const tl = gsap.timeline({
         scrollTrigger: {
             trigger: '.container',

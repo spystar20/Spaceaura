@@ -52,9 +52,7 @@ mm.add("(max-width:767px)",()=>{
            
         }
     })
-// tl.from('.image',{
-// scale:1.2,yPercent:30,opacity:0.5,duration:1
-// })
+
     tl.fromTo('.image', {
         scale: 1.2,
         yPercent: 30,
@@ -109,21 +107,19 @@ mm.add("(max-width:767px)",()=>{
 
                                         <img :src="approach" class="opacity-95 brightness-75  image w-full md:w-11/12" alt="">
     <div class="flex flex-col gap-5 justify-center items-center md:pr-6">
-                    <div
-                        class="feature flex flex-row gap-4 bg-linear-to-t from-main to-black  hover:bg-black rounded-xl p-2.5 md:p-5 group w-full md:max-w-8/12">
-                        <div class=" transition-all duration-300 ease-out">
+                    
+ <div class="feature flex flex-row gap-4 bg-black/85 rounded-xl p-2.5 md:p-5  w-full md:max-w-8/12 ">
+                        <div>
                             <img src="https://i.pinimg.com/1200x/87/3f/89/873f8928e27c13c03bb5862951ddb09a.jpg"
-                                class="rounded-lg aspect-sqaure  transition-all duration-300 ease-out  object-cover md:w-50 group-hover:scale-110 hover:transform-border border-2 "
-                                alt="">
+                                class="rounded-lg aspect-sqaure w-50" alt="">
 
                         </div>
-                        <div class=" text-white flex flex-col  gap-1 items-start justify-center ">
-                            <h3 class="font-heading font-medium text-lg md:text-2xl">Concept & Planning</h3>
-                            <p class="font-body text-xs md:text-sm ">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Laboriosam quas consequuntur </p>
+                        <div class=" text-white flex flex-col md:gap-2">
+                            <h3 class="font-heading font-medium text-lg md:text-2xl">Lorem, ipsum dolor.</h3>
+                            <p class="font-body text-xs md:text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Laboriosam quas consequuntur cumque?</p>
                         </div>
                     </div>
-
                     <div class="feature flex flex-row-reverse gap-4 bg-black/85 rounded-xl p-2.5 md:p-5  w-full md:max-w-8/12 ">
                         <div>
                             <img src="https://i.pinimg.com/1200x/87/3f/89/873f8928e27c13c03bb5862951ddb09a.jpg"

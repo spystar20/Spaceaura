@@ -10,6 +10,8 @@ let mm;
 
 onMounted(() => {
   mm = gsap.matchMedia();
+      const cards = gsap.utils.toArray(".projectCard-image");
+     const projectBox = gsap.utils.toArray(".projectCard")
   mm.add("(min-width: 768px)", () => {
     console.log("matchMedia running")
     const tl = gsap.timeline({
@@ -18,11 +20,9 @@ onMounted(() => {
         start: "top 95%",
         end: "bottom 40%",
         scrub: true,
-      markers:true
       }
     });
 
-    const cards = gsap.utils.toArray(".projectCard-image");
 
     tl.fromTo(".project-heading", { yPercent: 100 }, { yPercent: 0, ease: "power3.out" })
       .fromTo(".project-desc", { yPercent: 100 }, { yPercent: 0, ease: "power3.out" }, "<")
@@ -40,18 +40,62 @@ onMounted(() => {
 )
 .fromTo(".projectCard-textContainer",{y:20},{y:0},"<")
   });
+
+ mm.add("(max-width: 767px)", () => {
+
+  gsap.fromTo(
+    ".project-heading",
+    {
+      yPercent: 100,
+      opacity: 0
+    },
+    {
+      yPercent: 0,
+      opacity: 1,
+      scrollTrigger: {
+        trigger: ".project-heading",
+        start: "top 90%",
+        end: "top 60%",
+        scrub: true,
+      }
+    }
+  );
+
+  gsap.fromTo(
+    ".project-desc",
+    {
+      yPercent: 100,
+      opacity: 0
+    },
+    {
+      yPercent: 0,
+      opacity: 1,
+      scrollTrigger: {
+        trigger: ".project-desc",
+        start: "top 90%",
+        end: "top 60%",
+        scrub: true,
+      }
+    }
+  );
+projectBox.forEach((card)=>{
+  gsap.fromTo(card,{scaleY:0,opacity:0,transformOrigin:"center bottom"},{scaleY:1,opacity:100,scrollTrigger:{
+    trigger:card,start:"top 90%",end:"top 50%",scrub:true,markers:true
+  }})
+})
+
 });
 
-
+})
 </script>
 
 <template>
   <div class="px-2 py-5 md:px-5 project-container">
     <!-- heading -->
-    <div class="flex flex-col md:flex-row gap-3 md:gap-12 justify-between items-end md:items-start w-full">
+    <div class="flex flex-col md:flex-row gap-3 md:gap-12 justify-between  md:items-start w-full">
       <div class="md:flex-5 overflow-hidden">
-        <h2 class="font-bold font-heading text-4xl md:text-5xl bg-linear-to-r from-black to-main text-transparent bg-clip-text project-heading">
-          Explore Our Collection
+        <h2 class="font-semibold font-heading text-4xl md:text-5xl bg-linear-to-r from-black to-main text-transparent bg-clip-text project-heading">
+        Explore   Our Collection
         </h2>
       </div>
       <div class="md:flex-4 overflow-hidden">
