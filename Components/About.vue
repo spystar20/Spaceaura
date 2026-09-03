@@ -70,7 +70,7 @@ tl.from(".img-strips div",{
 },'<')
 }) 
 // animation for mobile
-mm.add("(min-width: 767px)", () => {
+mm.add("(min-width: 768px)", () => {
       const tl = gsap.timeline({
         scrollTrigger: {
             trigger: '.container',
@@ -82,6 +82,8 @@ mm.add("(min-width: 767px)", () => {
             markers: true
         }
     })
+
+})
     mm.add("(max-width: 767px)", () => {
    const tl = gsap.timeline({scrollTrigger:{
         start:'top top',end:"+=300",trigger:'.container',scrub:true,pinSpacing:true,pin:true
@@ -141,8 +143,6 @@ tl.from(".img-strips div",{
 .from(".interior",{
     x:-200
 },'<')
-})
-
 })
  })
 

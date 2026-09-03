@@ -8,11 +8,11 @@ onMounted(()=>{
     let mm ;
     mm = gsap.matchMedia()
     mm.add('(min-width:768px)',()=>{
-        const tl = gsap.timeline({scrollTrigger:{trigger:".statSection",start:"top top",end:"bottom top",scrub:true}})
+        const tl = gsap.timeline({scrollTrigger:{trigger:".statSection",start:"top 95%",end:"bottom top",scrub:true}})
 
-        tl.fromTo('.stat-mainheading',{
-            y:100,opacity:1
-        },{y:0,opacity:1})
+        tl.fromTo('.stat-mainheading ',{
+            x:100,opacity:0
+        },{x:0,opacity:1})
         .fromTo(
     ".meaningful-image-wrapper",
     {
@@ -23,22 +23,22 @@ onMounted(()=>{
         width: window.innerWidth >= 768 ? "10rem" : "3.75rem",
         opacity: 1,
         ease: "none",
-        scrollTrigger: {
-            trigger: ".meaningful-image-wrapper",
-            start: "top 85%",
-            end: "top 55%",
-            scrub: true,
-            markers: true
-        }
-    }
+        // scrollTrigger: {
+        //     trigger: ".meaningful-image-wrapper",
+        //     start: "top 85%",
+        //     end: "top 55%",
+        //     scrub: true,
+        //     markers: true
+        // }
+    },"<"
 );
     })
 
 })
 </script>
 <template>
-     <div class="md:px-5 px-2 pb-12 grid grid-cols-1 md:grid-cols-2 gap-6 statSection">
-            <div class="w-full order-2 md:order-1  p-6 items-center gap-5 rounded-2xl  bg-linear-to-b from-black to-main text-gray-100 grid md:grid-cols-2">
+     <div class="md:px-5 px-2 py-5 grid grid-cols-1 md:grid-cols-2 gap-6 statSection">
+            <div class="w-full order-2 md:order-1  p-3 items-center gap-5 rounded-2xl  bg-linear-to-b from-black to-main text-gray-100 grid md:grid-cols-2 min-h-[calc(100vh-40px)]">
                 <div class="flex flex-col gap-8 md:mb-16">
                     <StatCard v-for="(item, index) in [1,2,3]" :key="index" :heading="'bespoke concepts'" :description="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores necessitatibus t Lorem ipsum dolor sit amet.'"/>
                 </div>
@@ -54,12 +54,12 @@ onMounted(()=>{
                  <h2 class="flex flex-wrap justify-end font-heading text-3xl md:text-5xl font-semibold capitalize gap-x-4 leading-tight overflow-hidden"
 >
     <div class="text-center overflow-hidden ">
-        <span class="stat-mainheading">
+        <span class="stat-mainheading inline-block">
         Where Detail Shapes
         </span>
     </div>
 
-    <div class="flex items-center gap-4">
+    <div class="flex items-center gap-4 ">
         <span class="italic">
             Meaningful
         </span>
@@ -74,7 +74,7 @@ onMounted(()=>{
             />
         </div>
 
-        <span class="italic">
+        <span class="italic  ">
             Design
         </span>
     </div>
