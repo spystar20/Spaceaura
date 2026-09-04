@@ -4,6 +4,8 @@ import {  onMounted } from 'vue';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
 gsap.registerPlugin(ScrollTrigger)
+ScrollTrigger.normalizeScroll(true);
+
 // pin:true,pinSpacing:true
 
 onMounted(()=>{
@@ -86,7 +88,7 @@ mm.add("(min-width: 768px)", () => {
 })
     mm.add("(max-width: 767px)", () => {
    const tl = gsap.timeline({scrollTrigger:{
-        start:'top top',end:"+=300",trigger:'.container',scrub:true,pinSpacing:true,pin:true
+        start:'top top',end:"+=300",trigger:'.container',scrub:2,pinSpacing:true,pin:true
     }})
 const split = new SplitType('.title',{
     types:'words'

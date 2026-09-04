@@ -25,7 +25,7 @@ onMounted(async() => {
       trigger: '.hero-img',
       start: 'top top',
       end: 'bottom top',
-      scrub: true,
+      scrub: 1,
     }
   })
 })

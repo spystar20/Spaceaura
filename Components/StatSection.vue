@@ -8,10 +8,10 @@ onMounted(()=>{
     let mm ;
     mm = gsap.matchMedia()
     mm.add('(min-width:768px)',()=>{
-        const tl = gsap.timeline({scrollTrigger:{trigger:".statSection",start:"top 95%",end:"bottom top",scrub:true}})
+        const tl = gsap.timeline({scrollTrigger:{trigger:".statSection",start:"top 80%",end:"top 20%",scrub:2,markers:true}})
 
         tl.fromTo('.stat-mainheading ',{
-            x:100,opacity:0
+            x:50,opacity:0
         },{x:0,opacity:1})
         .fromTo(
     ".meaningful-image-wrapper",
@@ -31,7 +31,19 @@ onMounted(()=>{
         //     markers: true
         // }
     },"<"
-);
+)
+.fromTo(
+    ".stat-line-text",
+    {
+        x: 50,
+        opacity: 0
+    },
+    {
+        x: 0,
+        opacity: 1,
+        ease: "none"
+    },"<"
+)
     })
 
 })
@@ -79,9 +91,10 @@ onMounted(()=>{
         </span>
     </div>
 </h2>
-                    <h6 class="capitalize font-body font-bold flex items-center gap-1 md:gap-2 text-sm text-end">
-                        <ArrowLeft class="w-5 text-black" /><span class=" h-[0.5px] bg-black w-25 md:w-50"></span>inside the
-                        process
+                    <h6 class="capitalize font-body font-bold flex items-center gap-1 md:gap-2 text-sm text-end overflow-hidden  
+                    ">
+                        <ArrowLeft class="w-5 text-black" /><span class=" h-[0.5px] bg-black w-25 md:w-50 stat-line"></span> <p class="stat-line-text">inside the
+                        process</p>
                     </h6>
 
                     <div class="flex items-end flex-col md:flex-row-reverse gap-3 ">

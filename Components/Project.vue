@@ -19,7 +19,7 @@ onMounted(() => {
         trigger: ".project-container",
         start: "top 95%",
         end: "bottom 40%",
-        scrub: true,
+        scrub: 2,
       }
     });
 

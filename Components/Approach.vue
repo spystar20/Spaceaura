@@ -3,6 +3,7 @@ import { onMounted } from 'vue';
 import approach from '../src/assets/approach.png'
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+ScrollTrigger.normalizeScroll(true);
 
 gsap.registerPlugin(ScrollTrigger)
 onMounted(() => {
@@ -48,7 +49,7 @@ mm.add("(max-width:767px)",()=>{
             trigger: '.approach-container',
             start: 'top center',
             end: 'bottom top',
-            scrub: true,
+            scrub: 2,
            
         }
     })
