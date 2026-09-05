@@ -44,6 +44,10 @@ onMounted(()=>{
         ease: "none"
     },"<"
 )
+
+.fromTo(".stat-line",{
+    width:"0"
+},{width:"200px"})
     })
 
 })
@@ -97,8 +101,8 @@ onMounted(()=>{
                         process</p>
                     </h6>
 
-                    <div class="flex items-end flex-col md:flex-row-reverse gap-3 ">
-                        <p class="max-w-11/12  md:w-[65%] text-xs font-body  text-end">
+                    <div class="flex items-end flex-col md:flex-row-reverse gap-3 overflow-hidden">
+                        <p class="max-w-11/12  md:w-[65%] text-xs font-body  text-end stat-line-text">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde rem accusamus, fuga saepe aut
                             eos optio repudiandae Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt enim
                             facere architecto.
