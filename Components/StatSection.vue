@@ -3,12 +3,14 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { onMounted, onUnmounted } from 'vue';
 import StatCard from '../src/components/StatCard.vue';
+import SplitType from 'split-type';
 gsap.registerPlugin(ScrollTrigger)
 onMounted(()=>{
     let mm ;
     mm = gsap.matchMedia()
+    const split = new SplitType(".interior-stat",{types:'chars'})
     mm.add('(min-width:768px)',()=>{
-        const tl = gsap.timeline({scrollTrigger:{trigger:".statSection",start:"top 80%",end:"top 20%",scrub:2,markers:true}})
+        const tl = gsap.timeline({scrollTrigger:{trigger:".statSection",start:"top 90%",end:"top 10%",scrub:2,markers:true}})
 
         tl.fromTo('.stat-mainheading ',{
             x:50,opacity:0
@@ -33,7 +35,7 @@ onMounted(()=>{
     },"<"
 )
 .fromTo(
-    ".stat-line-text",
+  ".stat-line-text",
     {
         x: 50,
         opacity: 0
@@ -41,10 +43,26 @@ onMounted(()=>{
     {
         x: 0,
         opacity: 1,
-        ease: "none"
-    },"<"
+        ease: "none",
+        duration: 1
+    },
+    "+=0.1"
 )
-
+.fromTo(
+    ".stat-button",
+    {
+        scale: 0.9,
+        opacity: 0
+    },
+    {
+        scale: 1,
+        opacity: 1,
+        ease: "power3",
+        duration: 0.5
+    },
+    "<"
+)
+.fromTo(split.chars,{y:40},{y:0})
 .fromTo(".stat-line",{
     width:"0"
 },{width:"200px"})
@@ -108,14 +126,14 @@ onMounted(()=>{
                             facere architecto.
                         </p>
                         <button class="px-6 py-2 cursor-pointer hover:bg-white hover:border-black border hover:text-black transition-all duration-300 ease-in
-                 bg-black text-white rounded-full">Learn More</button>
+                 bg-black text-white rounded-full stat-button">Learn More</button>
                     </div>
                 </div>
                 <!-- stat -->
                 <div class="flex flex-wrap items-center justify-center gap-4 py-6">
                     <div class="flex flex-col items-center  gap-1 px-3 mx:px-6 ">
-                        <h2 class="text-3xl md:text-4xl font-bold font-projects">150+</h2>
-                        <p class="md:text-base text-xs font-medium">Curated Interiors</p>
+                        <h2 class="text-3xl md:text-4xl font-bold font-projects interior-stat">150+</h2>
+                        <p class="md:text-base text-xs font-medium interior">Curated Interiors</p>
                     </div>
                     <span class="w-[0.5px] h-5 bg-gray-400 flex self-center"></span>
                     <div class="flex flex-col items-center  gap-1  px-3 mx:px-6 ">
