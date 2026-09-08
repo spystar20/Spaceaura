@@ -13,7 +13,7 @@ const mm = gsap.matchMedia()
     // animation for laptop
  mm.add("(min-width: 768px)",()=>{
       const tl = gsap.timeline({scrollTrigger:{
-        start:'top top',end:"+=900",trigger:'.container',scrub:true,pin:true,pinSpacing:true
+        start:'top top',end:"+=800%",trigger:'.container',scrub:true,pin:true,pinSpacing:true
     }})
 const split = new SplitType('.title',{
     types:'words'

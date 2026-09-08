@@ -106,7 +106,7 @@ mm.add("(max-width:767px)",()=>{
                 <!-- Lighting & Atmosphere -->
                  <div class="grid grid-cols-1 md:grid-cols-2 justify-items-center " >
 
-                                        <img :src="approach" class="opacity-95 brightness-75  image w-full md:w-11/12" alt="">
+                                        <img :src="approach"  class="opacity-95 brightness-75  image w-full md:w-11/12" alt="">
     <div class="flex flex-col gap-5 justify-center items-center md:pr-6">
                     
  <div class="feature flex flex-row gap-4 bg-black/85 rounded-xl p-2.5 md:p-5  w-full md:max-w-8/12 ">

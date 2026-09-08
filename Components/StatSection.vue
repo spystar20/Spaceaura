@@ -8,10 +8,23 @@ gsap.registerPlugin(ScrollTrigger)
 onMounted(()=>{
     let mm ;
     mm = gsap.matchMedia()
-    const split = new SplitType(".interior-stat",{types:'chars'})
-    mm.add('(min-width:768px)',()=>{
-        const tl = gsap.timeline({scrollTrigger:{trigger:".statSection",start:"top 90%",end:"top 10%",scrub:2,markers:true}})
+    const split = new SplitType(".number-stat",{types:'chars'})
+    const splitText = new SplitType(".number-text-stat",{types:"chars"})
+    const statImg = gsap.utils.toArray(".stat-image")
 
+    mm.add('(min-width:768px)',()=>{
+        const tl = gsap.timeline({scrollTrigger:{trigger:".statSection",start:"top 85%",end:"bottom 70%",scrub:1.5}})
+        gsap.set(statImg.slice(1),{
+            clipPath: "inset(100% 0% 0% 0%)"
+        })
+ const imageTl = gsap.timeline({scrollTrigger:{
+    trigger:".stat-image-wrapper",start:"top 80%",once:true,markers:true
+ }})
+statImg.slice(1).forEach(img=>{
+    imageTl.to(img,{
+        clipPath:'inset(0% 0% 0% 0%)',ease:"circ",delay:0.5,duration:1
+    })
+})
         tl.fromTo('.stat-mainheading ',{
             x:50,opacity:0
         },{x:0,opacity:1})
@@ -25,13 +38,6 @@ onMounted(()=>{
         width: window.innerWidth >= 768 ? "10rem" : "3.75rem",
         opacity: 1,
         ease: "none",
-        // scrollTrigger: {
-        //     trigger: ".meaningful-image-wrapper",
-        //     start: "top 85%",
-        //     end: "top 55%",
-        //     scrub: true,
-        //     markers: true
-        // }
     },"<"
 )
 .fromTo(
@@ -44,7 +50,7 @@ onMounted(()=>{
         x: 0,
         opacity: 1,
         ease: "none",
-        duration: 1
+        duration: 0.5
     },
     "+=0.1"
 )
@@ -62,16 +68,21 @@ onMounted(()=>{
     },
     "<"
 )
-.fromTo(split.chars,{y:40},{y:0})
+.fromTo(split.chars,{y:40},{y:0,stagger:0.05,duration:2})
+.fromTo(splitText.chars,{y:-40},{y:0,stagger:0.3},"+=1")
+
 .fromTo(".stat-line",{
     width:"0"
 },{width:"200px"})
+    .fromTo(".stat-spacer",{height:"0"},{height:"20px"},"<")
+
     })
+
 
 })
 </script>
 <template>
-     <div class="md:px-5 px-2 py-5 grid grid-cols-1 md:grid-cols-2 gap-6 statSection">
+     <div class="md:px-5 px-2 py-5 grid grid-cols-1 md:grid-cols-2 gap-6 statSection relative">
             <div class="w-full order-2 md:order-1  p-3 items-center gap-5 rounded-2xl  bg-linear-to-b from-black to-main text-gray-100 grid md:grid-cols-2 min-h-[calc(100vh-40px)]">
                 <div class="flex flex-col gap-8 md:mb-16">
                     <StatCard v-for="(item, index) in [1,2,3]" :key="index" :heading="'bespoke concepts'" :description="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores necessitatibus t Lorem ipsum dolor sit amet.'"/>
@@ -131,24 +142,41 @@ onMounted(()=>{
                 </div>
                 <!-- stat -->
                 <div class="flex flex-wrap items-center justify-center gap-4 py-6">
-                    <div class="flex flex-col items-center  gap-1 px-3 mx:px-6 ">
-                        <h2 class="text-3xl md:text-4xl font-bold font-projects interior-stat">150+</h2>
-                        <p class="md:text-base text-xs font-medium interior">Curated Interiors</p>
+                    <div class="flex flex-col items-center  gap-1 px-3 mx:px-6 overflow-hidden ">
+                        <span class="overflow-hidden">
+                        <h2 class="text-3xl md:text-4xl font-bold font-projects number-stat">150+</h2>
+                        </span>
+                        <span class="overflow-hidden">
+                        <p class="md:text-base text-xs font-medium interior number-text-stat">Curated Interiors</p>
+                        </span>
                     </div>
-                    <span class="w-[0.5px] h-5 bg-gray-400 flex self-center"></span>
+                    <span class="w-[0.5px]  bg-gray-400 flex self-center stat-spacer"></span>
                     <div class="flex flex-col items-center  gap-1  px-3 mx:px-6 ">
-                        <h2 class="text-3xl md:text-4xl font-bold font-projects">50+</h2>
-                        <p class="md:text-base text-xs font-medium">Happy Customers</p>
+                        <span class="overflow-hidden">
+                        <h2 class="text-3xl md:text-4xl font-bold font-projects number-stat">50+</h2>
+                        </span>
+                        <span class="overflow-hidden">
+                        <p class="md:text-base text-xs font-medium number-text-stat">Happy Customers</p>
+                        </span>
                     </div>
-                    <span class="w-[0.5px] h-5 bg-gray-400 flex self-center"></span>
+                    <span class="w-[0.5px]  bg-gray-400 flex self-center stat-spacer"></span>
                     <div class="flex flex-col items-center  gap-1  px-3 mx:px-6">
-                        <h2 class="text-3xl md:text-4xl font-bold font-projects">10+</h2>
-                        <p class="md:text-base text-xs font-medium">Industry Expertise</p>
+                        <span class="overflow-hidden">
+
+                        <h2 class="text-3xl md:text-4xl font-bold font-projects number-stat">10+</h2>
+                        </span>
+                        <span class="overflow-hidden">
+                        <p class="md:text-base text-xs font-medium number-text-stat">Industry Expertise</p>
+                        </span>
                     </div>
                 </div>
-                <div class="w-full">
-                    <img class="rounded-2xl h-[280px] object-cover w-full"
+                <div class="stat-image-wrapper relative w-full h-[280px] overflow-hidden rounded-2xl">
+                    <img class="stat-image absolute inset-0 w-full h-full object-cover"
                         src="https://i.pinimg.com/1200x/e5/b0/c7/e5b0c7297721a4be2f3e258a3afc5587.jpg" alt="">
+                          <img class="stat-image absolute inset-0 w-full h-full object-cover"
+                        src="https://i.pinimg.com/1200x/8b/56/26/8b56266cc26f348af494e5c503506e48.jpg" alt="">
+                             <img class="stat-image absolute inset-0 w-full h-full object-cover"
+                        src="https://i.pinimg.com/736x/78/53/09/78530948f1240d33b117f4397dc40283.jpg" alt="">
                 </div>
             </div>
 
