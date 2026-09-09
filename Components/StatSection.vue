@@ -13,7 +13,7 @@ onMounted(() => {
     const statImg = gsap.utils.toArray(".stat-image")
 
     mm.add('(min-width:768px)', () => {
-        const tl = gsap.timeline({ scrollTrigger: { trigger: ".statSection", start: "top 85%", end: "top 5%", scrub:  3,markers:true} })
+        const tl = gsap.timeline({ scrollTrigger: { trigger: ".statSection", start: "top 85%", end: "top 5%", scrub:  2.5,markers:true} })
         gsap.set(statImg.slice(1), {
             clipPath: "inset(100% 0% 0% 0%)"
         })
@@ -24,12 +24,13 @@ onMounted(() => {
         })
         statImg.slice(1).forEach(img => {
             imageTl.to(img, {
-                clipPath: 'inset(0% 0% 0% 0%)', ease: "circ", delay: 0.5, duration: 1
+                clipPath: 'inset(0% 0% 0% 0%)', ease: "power2.inOut", delay:1, duration: 0.8
             })
         })
-            tl.fromTo('.stat-mainheading ', {
+            tl.to({}, { duration: 1 })
+            .fromTo('.stat-mainheading ', {
                 x: 120, opacity: 0
-            }, { x: 0, opacity: 1, duration: 3, ease: "power2.inOut" })
+            }, { x: 0, opacity: 1, duration: 1.5, ease: "none" })
             .fromTo(
                 ".meaningful-image-wrapper",
                 {
@@ -42,7 +43,9 @@ onMounted(() => {
                     ease: "none",duration:1.5
                 }, 
             )
-
+.from(".img-text",{
+    opacity:0,duration:0.5,ease:'none'
+},"-=1.3")
             .fromTo(
                 ".stat-line-text",
                 {
@@ -76,7 +79,7 @@ onMounted(() => {
 
             .fromTo(".stat-line", {
                 width: "0"
-            }, { width: "200px" })
+            }, { width: "200px",duration:2 })
             .fromTo(".stat-spacer", { height: "0" }, { height: "20px" }, "<")
 
     })
@@ -111,7 +114,7 @@ onMounted(() => {
                     </div>
 
                     <div class="flex items-center gap-4 ">
-                        <span class="italic">
+                        <span class="italic img-text">
                             Meaningful
                         </span>
 
@@ -121,7 +124,7 @@ onMounted(() => {
                                 src="https://i.pinimg.com/736x/db/48/75/db4875081f8248aa02d8420912fcf84e.jpg" alt="" />
                         </div>
 
-                        <span class="italic  ">
+                        <span class="italic  img-text">
                             Design
                         </span>
                     </div>
