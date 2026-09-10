@@ -11,9 +11,10 @@ onMounted(() => {
     const split = new SplitType(".number-stat", { types: 'chars' })
     const splitText = new SplitType(".number-text-stat", { types: "chars" })
     const statImg = gsap.utils.toArray(".stat-image")
-
+const leftCards = document.querySelector(".stat-card-track-left")
+const rightCards = document.querySelector(".stat-card-track-right")
     mm.add('(min-width:768px)', () => {
-        const tl = gsap.timeline({ scrollTrigger: { trigger: ".statSection", start: "top 85%", end: "top 5%", scrub:  2.5,markers:true} })
+        const tl = gsap.timeline({ scrollTrigger: { trigger: ".statSection", start: "top 85%", end: "top 5%", scrub:  3,markers:true} })
         gsap.set(statImg.slice(1), {
             clipPath: "inset(100% 0% 0% 0%)"
         })
@@ -81,6 +82,19 @@ onMounted(() => {
                 width: "0"
             }, { width: "200px",duration:2 })
             .fromTo(".stat-spacer", { height: "0" }, { height: "20px" }, "<")
+            gsap.to(leftCards, {
+    yPercent: -50,
+    duration: 18,
+    ease: "none",
+    repeat: -1
+})
+
+gsap.to(rightCards, {
+    yPercent: 50,
+    duration: 22,
+    ease: "none",
+    repeat: -1
+})
 
     })
 
@@ -90,12 +104,12 @@ onMounted(() => {
 <template>
     <div class="md:px-5 px-2 py-5 grid grid-cols-1 md:grid-cols-2 gap-6 statSection relative">
         <div
-            class="w-full order-2 md:order-1  p-3 items-center gap-5 rounded-2xl  bg-linear-to-b from-black to-main text-gray-100 grid md:grid-cols-2 min-h-[calc(100vh-40px)]">
-            <div class="flex flex-col gap-8 md:mb-16">
+            class="w-full order-2 md:order-1  p-3 items-center gap-5 rounded-2xl  bg-linear-to-b from-black to-main text-gray-100 grid md:grid-cols-2 min-h-[calc(100vh-40px)] overflow-hidden">
+            <div class="stat-card-track-left flex flex-col gap-8 md:mb-16">
                 <StatCard v-for="(item, index) in [1, 2, 3]" :key="index" :heading="'bespoke concepts'"
                     :description="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores necessitatibus t Lorem ipsum dolor sit amet.'" />
             </div>
-            <div class="flex flex-col gap-8 md:mt-16">
+            <div class="stat-card-track-right flex flex-col gap-8 md:mt-16">
                 <StatCard v-for="(item, index) in [1, 2, 3]" :key="index" :heading="'bespoke concepts'"
                     :description="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores necessitatibus t Lorem ipsum dolor sit amet.'" />
 
