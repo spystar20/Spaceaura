@@ -84,37 +84,138 @@ const rightCards = document.querySelector(".stat-card-track-right")
             .fromTo(".stat-spacer", { height: "0" }, { height: "20px" }, "<")
             gsap.to(leftCards, {
     yPercent: -50,
-    duration: 18,
+    duration: 24,
     ease: "none",
     repeat: -1
 })
 
+gsap.set(rightCards, { yPercent: -50 })
+
 gsap.to(rightCards, {
-    yPercent: 50,
-    duration: 22,
+    yPercent: 0,
+    duration: 24,
     ease: "none",
     repeat: -1
 })
 
     })
+mm.add('(max-width:767px)',()=>{
+            const tl = gsap.timeline({ scrollTrigger: { trigger: ".statSection", start: "top 85%", end: "top 5%", scrub:  3,markers:true} })
+                   gsap.set(statImg.slice(1), {
+            clipPath: "inset(100% 0% 0% 0%)"
+        })
+        const imageTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".stat-image-wrapper", start: "top 80%", once: true
+            }
+        })
+        statImg.slice(1).forEach(img => {
+            imageTl.to(img, {
+                clipPath: 'inset(0% 0% 0% 0%)', ease: "power2.inOut", delay:1, duration: 0.8
+            })
+        })
+            tl.to({}, { duration: 1 })
+              .fromTo('.stat-mainheading ', {
+                x: 120, opacity: 0
+            }, { x: 0, opacity: 1, duration: 1.5, ease: "none" })
+            .fromTo(
+                ".meaningful-image-wrapper",
+                {
+                    width: 0,
+                    opacity: 0
+                },
+                {
+                    width: window.innerWidth >= 768 ? "10rem" : "3.75rem",
+                    opacity: 1,
+                    ease: "none",duration:1.5
+                }, 
+            )
+.from(".img-text",{
+    opacity:0,duration:0.5,ease:'none'
+},"-=1.3")
+            .fromTo(
+                ".stat-line-text",
+                {
+                    x: 50,
+                    opacity: 0
+                },
+                {
+                    x: 0,
+                    opacity: 1,
+                    ease: "none",
+                    duration: 0.4
+                },
+                
+            )
+            .fromTo(
+                ".stat-button",
+                {
+                    scale: 0.9,
+                    opacity: 0
+                },
+                {
+                    scale: 1,
+                    opacity: 1,
+                    ease: "power3",
+                    duration: 0.5
+                },
+                "<"
+            )
+               .fromTo(split.chars, { y: 40 }, { y: 0, stagger: 0.05, duration: 2 })
+            .fromTo(splitText.chars, { y: -40 }, { y: 0, stagger: 0.05,duration:0.5 },"<")
 
+            .fromTo(".stat-line", {
+                width: "0"
+            }, { width: "150px",duration:2 })
+            .fromTo(".stat-spacer", { height: "0" }, { height: "20px" }, "<")
+            gsap.to(leftCards, {
+    yPercent: -50,
+    duration: 24,
+    ease: "none",
+    repeat: -1
+})
+
+gsap.set(rightCards, { yPercent: -50 })
+
+gsap.to(rightCards, {
+    yPercent: 0,
+    duration: 24,
+    ease: "none",
+    repeat: -1
+})
+
+})
 
 })
 </script>
 <template>
-    <div class="md:px-5 px-2 py-5 grid grid-cols-1 md:grid-cols-2 gap-6 statSection relative">
-        <div
-            class="w-full order-2 md:order-1  p-3 items-center gap-5 rounded-2xl  bg-linear-to-b from-black to-main text-gray-100 grid md:grid-cols-2 min-h-[calc(100vh-40px)] overflow-hidden">
-            <div class="stat-card-track-left flex flex-col gap-8 md:mb-16">
-                <StatCard v-for="(item, index) in [1, 2, 3]" :key="index" :heading="'bespoke concepts'"
-                    :description="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores necessitatibus t Lorem ipsum dolor sit amet.'" />
-            </div>
-            <div class="stat-card-track-right flex flex-col gap-8 md:mt-16">
-                <StatCard v-for="(item, index) in [1, 2, 3]" :key="index" :heading="'bespoke concepts'"
-                    :description="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores necessitatibus t Lorem ipsum dolor sit amet.'" />
+    <div class="md:px-5 px-2 py-5 grid grid-cols-1 md:grid-cols-2 gap-6 statSection relative min-h-screen overflow-hidden">
+       <div
+    class="w-full order-2 md:order-1 p-3 items-center gap-5 rounded-2xl bg-linear-to-b from-black to-main text-gray-100 grid md:grid-cols-2 h-[calc(100vh-40px)] overflow-hidden">
 
-            </div>
-        </div>
+    <div class="stat-card-track-left flex flex-col gap-8 md:mb-16">
+        <template v-for="set in 2" :key="set">
+            <StatCard
+                v-for="item in [1, 2, 3]"
+                :key="`${set}-${item}`"
+                :heading="'bespoke concepts'"
+                :description="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores necessitatibus t Lorem ipsum dolor sit amet.'"
+            />
+        </template>
+    </div>
+
+    <div class="stat-card-track-right flex flex-col gap-8 md:mt-16">
+        <template v-for="set in 2" :key="set">
+            <StatCard
+                v-for="item in [1, 2, 3]"
+                :key="`${set}-${item}`"
+                :heading="'bespoke concepts'"
+                :description="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores necessitatibus t Lorem ipsum dolor sit amet.'"
+            />
+        </template>
+    </div>
+
+</div>
         <div class=" px-3 box-border w-full flex flex-col justify-end items-end-safe gap-4">
             <!-- heading -->
             <div class="flex flex-col items-end w-full gap-4 ">
