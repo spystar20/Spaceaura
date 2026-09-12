@@ -14,7 +14,7 @@ onMounted(() => {
 const leftCards = document.querySelector(".stat-card-track-left")
 const rightCards = document.querySelector(".stat-card-track-right")
     mm.add('(min-width:768px)', () => {
-        const tl = gsap.timeline({ scrollTrigger: { trigger: ".statSection", start: "top 85%", end: "top 5%", scrub:  3,markers:true} })
+        const tl = gsap.timeline({ scrollTrigger: { trigger: ".statSection", start: "top 85%", end: "top 5%", scrub: 3} })
         gsap.set(statImg.slice(1), {
             clipPath: "inset(100% 0% 0% 0%)"
         })
@@ -100,7 +100,7 @@ gsap.to(rightCards, {
 
     })
 mm.add('(max-width:767px)',()=>{
-            const tl = gsap.timeline({ scrollTrigger: { trigger: ".statSection", start: "top 85%", end: "top 5%", scrub:  3,markers:true} })
+            const tl = gsap.timeline({ scrollTrigger: { trigger: ".statSection", start: "top 85%", end: "top 5%", scrub:  3,} })
                    gsap.set(statImg.slice(1), {
             clipPath: "inset(100% 0% 0% 0%)"
         })
@@ -116,18 +116,18 @@ mm.add('(max-width:767px)',()=>{
         })
             tl.to({}, { duration: 1 })
               .fromTo('.stat-mainheading ', {
-                x: 120, opacity: 0
-            }, { x: 0, opacity: 1, duration: 1.5, ease: "none" })
+                y: 60, opacity: 0
+            }, { y: 0, opacity: 1, duration: 1.2, ease: "none" })
             .fromTo(
                 ".meaningful-image-wrapper",
                 {
-                    width: 0,
+                    scale: 0,
                     opacity: 0
                 },
                 {
-                    width: window.innerWidth >= 768 ? "10rem" : "3.75rem",
+                    scale: 1,
                     opacity: 1,
-                    ease: "none",duration:1.5
+                    ease: "power2.out",duration:0.8
                 }, 
             )
 .from(".img-text",{
@@ -166,7 +166,7 @@ mm.add('(max-width:767px)',()=>{
 
             .fromTo(".stat-line", {
                 width: "0"
-            }, { width: "150px",duration:2 })
+            }, { width: "140px",duration:2 })
             .fromTo(".stat-spacer", { height: "0" }, { height: "20px" }, "<")
             gsap.to(leftCards, {
     yPercent: -50,
@@ -175,14 +175,6 @@ mm.add('(max-width:767px)',()=>{
     repeat: -1
 })
 
-gsap.set(rightCards, { yPercent: -50 })
-
-gsap.to(rightCards, {
-    yPercent: 0,
-    duration: 24,
-    ease: "none",
-    repeat: -1
-})
 
 })
 
@@ -191,7 +183,7 @@ gsap.to(rightCards, {
 <template>
     <div class="md:px-5 px-2 py-5 grid grid-cols-1 md:grid-cols-2 gap-6 statSection relative min-h-screen overflow-hidden">
        <div
-    class="w-full order-2 md:order-1 p-3 items-center gap-5 rounded-2xl bg-linear-to-b from-black to-main text-gray-100 grid md:grid-cols-2 h-[calc(100vh-40px)] overflow-hidden">
+    class="w-full order-2 md:order-1 md:p-3 items-center gap-5 rounded-2xl bg-linear-to-b from-black to-main text-gray-100 grid md:grid-cols-2 h-[calc(100vh-40px)] overflow-hidden">
 
     <div class="stat-card-track-left flex flex-col gap-8 md:mb-16">
         <template v-for="set in 2" :key="set">
@@ -216,7 +208,7 @@ gsap.to(rightCards, {
     </div>
 
 </div>
-        <div class=" px-3 box-border w-full flex flex-col justify-end items-end-safe gap-4">
+        <div class=" md:px-3 box-border w-full flex flex-col justify-end items-end-safe gap-4">
             <!-- heading -->
             <div class="flex flex-col items-end w-full gap-4 ">
 
@@ -228,13 +220,13 @@ gsap.to(rightCards, {
                         </span>
                     </div>
 
-                    <div class="flex items-center gap-4 ">
+                    <div class="flex items-center gap-1 md:gap-4 ">
                         <span class="italic img-text">
                             Meaningful
                         </span>
 
                         <div
-                            class="meaningful-image-wrapper overflow-hidden rounded-full md:w-40 md:h-20 w-15 h-8 shrink-0">
+                            class="meaningful-image-wrapper overflow-hidden rounded-full md:w-40 md:h-20 w-12 h-8 shrink-0">
                             <img class="meaningful-image w-full h-full object-cover"
                                 src="https://i.pinimg.com/736x/db/48/75/db4875081f8248aa02d8420912fcf84e.jpg" alt="" />
                         </div>
