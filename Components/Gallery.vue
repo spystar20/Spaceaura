@@ -9,11 +9,17 @@ onMounted(()=>{
     let mm 
    mm= gsap.matchMedia()
        const splitLines= new SplitType('.gallery-subheading',{types:'lines'})
-
+const imageGallery  = gsap.utils.toArray(".gallery-div ")
    mm.add('(min-width:768px)',()=>{
-    const tl = gsap.timeline({scrollTrigger:{trigger:".gallery-container",scrub:2,start:"top 90%",end:"top center",markers:true}})
+    const tl = gsap.timeline({scrollTrigger:{trigger:".gallery-container",scrub:2,start:"top 90%",end:"top 60%",markers:true}})
     tl.from('.gallery-heading',{
         y:120,opacity:0,duration:2,
+    })
+    imageGallery.forEach(div=>{
+        div.addEventListener("mouseenter",()=>{
+gsap.to("div:nth-of-type(2) img",{opacity:1,height:'260px'})
+        })
+
     })
     .from(splitLines.lines,{
         y:60,rotateY:50, opacity:0,duration:1.5,ease:"none",stagger:'0.3'
@@ -45,28 +51,49 @@ onMounted(()=>{
                  </span>
             </div>
             <ul class="flex flex-col gap-2 flex-1 mt-5">
-                <li
-                    class="  text-2xl font-medium font-body border-y-[0.2px] border-y-gray-700 py-4 w-full px-8 flex items-center justify-between">
+             <li
+                    class="border-y-[0.2px] border-y-gray-700 py-4 flex flex-col gallery-div  ">
+                    <div class="text-2xl font-medium font-body  w-full px-8 flex  items-center justify-between">
+                 <h2>    
                     Modern Living Rooms
-                    <ArrowLeft class="w-5  rotate-130 text-black " />
+</h2>   
+                    <ArrowLeft class="w-8 h-8 rotate-130 text-black " />
+                    </div>
+                      <div class="flex gap-3 items-end justify-end pr-12 pt-4 image-container">
+                        
+                        <img v-for="(item, index) in [1,2,3]" :key="index" class="w-[205px] h-0 opacity-0 object-cover  gallery-image  rounded-2xl" src="https://i.pinimg.com/736x/c1/a8/a9/c1a8a92894279e57c4e19ba092a79be4.jpg" alt="">
+                    </div>
                 </li>
-                <li
-                    class="  text-2xl font-medium font-body border-y-[0.2px] border-y-gray-700 py-4 w-full px-8 flex items-center justify-between">
+                    <li
+                    class="border-y-[0.2px] border-y-gray-700 py-4 flex flex-col gallery-div  ">
+                    <div class="text-2xl font-medium font-body  w-full px-8 flex  items-center justify-between">
+                 <h2>    
                     Modern Living Rooms
-                    <ArrowLeft class="w-5  rotate-130 text-black " />
+</h2>   
+                    <ArrowLeft class="w-8 h-8 rotate-130 text-black " />
+                    </div>
+                      <div class="flex gap-3 items-end justify-end pr-12 pt-4 image-container">
+                        
+                        <img v-for="(item, index) in [1,2,3]" :key="index" class="w-[205px] h-0 opacity-0 object-cover  gallery-image  rounded-2xl" src="https://i.pinimg.com/736x/c1/a8/a9/c1a8a92894279e57c4e19ba092a79be4.jpg" alt="">
+                    </div>
                 </li>
-                <li
-                    class="  text-2xl font-medium font-body border-y-[0.2px] border-y-gray-700 py-4 w-full px-8 flex items-center justify-between">
+                    <li
+                    class="border-y-[0.2px] border-y-gray-700 py-4 flex flex-col gallery-div  ">
+                    <div class="text-2xl font-medium font-body  w-full px-8 flex  items-center justify-between">
+                 <h2>    
                     Modern Living Rooms
-                    <ArrowLeft class="w-5  rotate-130 text-black " />
-                </li>
-                <li
-                    class="  text-2xl font-medium font-body border-y-[0.2px] border-y-gray-700 py-4 w-full px-8 flex items-center justify-between">
-                    Modern Living Rooms
-                    <ArrowLeft class="w-5  rotate-130 text-black " />
+</h2>   
+                    <ArrowLeft class="w-8 h-8 rotate-130 text-black " />
+                    </div>
+                      <div class="flex gap-3 items-end justify-end pr-12 pt-4 image-container">
+                        
+                        <img v-for="(item, index) in [1,2,3]" :key="index" class="w-[205px] h-0 opacity-0 object-cover  gallery-image  rounded-2xl" src="https://i.pinimg.com/736x/c1/a8/a9/c1a8a92894279e57c4e19ba092a79be4.jpg" alt="">
+                    </div>
                 </li>
 
             </ul>
         </div>
 </template>
-<style scoped></style>
+<style scoped>
+
+</style>
