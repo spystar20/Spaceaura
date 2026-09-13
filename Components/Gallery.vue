@@ -16,10 +16,16 @@ const imageGallery  = gsap.utils.toArray(".gallery-div ")
         y:120,opacity:0,duration:2,
     })
     imageGallery.forEach(div=>{
+        const images  = div.querySelectorAll(".gallery-image")
         div.addEventListener("mouseenter",()=>{
-gsap.to("div:nth-of-type(2) img",{opacity:1,height:'260px'})
+            
+gsap.to(images,{opacity:1,height:'260px',stagger:'0.3'})
         })
-
+div.addEventListener("mouseleave",()=>{
+    gsap.to(images,{
+        opacity:0,height:0
+    })
+})
     })
     .from(splitLines.lines,{
         y:60,rotateY:50, opacity:0,duration:1.5,ease:"none",stagger:'0.3'
