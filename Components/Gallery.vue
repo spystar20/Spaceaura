@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { ArrowLeft } from 'lucide-vue-next';
 import SplitType from 'split-type';
-import { onMounted, onUnmounted } from 'vue';
+import { nextTick, onMounted, onUnmounted, ref } from 'vue';
 gsap.registerPlugin(ScrollTrigger)
 const galleryItems = [
     {
@@ -39,40 +39,31 @@ const galleryItems = [
         ]
     }
 ]
-onMounted(()=>{
-    
-    let mm 
-   mm= gsap.matchMedia()
-       const splitLines= new SplitType('.gallery-subheading',{types:'lines'})
-const imageGallery  = gsap.utils.toArray(".gallery-div ")
-   mm.add('(min-width:768px)',()=>{
-    const tl = gsap.timeline({scrollTrigger:{trigger:".gallery-container",scrub:2,start:"top 90%",end:"top top"}})
+   let ctx 
+const mainRef = ref(null)
+    let splitLines
+onMounted(async()=>{
+await nextTick()
+if(document.fonts) await document.fonts.ready
+    ctx=gsap.context(()=>{
+const imageGallery  = gsap.utils.toArray(".gallery-div")
 
-    imageGallery.forEach(div=>{
-        const images  = div.querySelectorAll(".gallery-image")
-        div.addEventListener("mouseenter",()=>{
-            
-gsap.to(images,{opacity:1,height:'260px',stagger:0.15,duration:0.6,y:0,ease:"power3.out",overwrite:"auto"})
-        })
-div.addEventListener("mouseleave",()=>{
-    gsap.to(images,{
-        opacity:0,height:0,stagger:{
-            each:0.15,from:'end'
-        },y:40,duration:0.4,ease:"power2.in",overwrite:"auto"
-    })
-})
-    })
-tl.from('.gallery-heading', {
+
+    if (splitLines) splitLines.revert()
+            splitLines= new SplitType('.gallery-subheading',{types:'lines'})
+
+    const tl = gsap.timeline({scrollTrigger:{trigger:mainRef.value,scrub:2,start:"top 90%",end:"top top",markers:true,once:true}})
+tl.fromTo('.gallery-heading', {
     y: 120,
     opacity: 0,
-    duration: 2,
-    ease: "power3.out"
-})
-.from(splitLines.lines, {
+},{y:0,opacity:1 ,duration: 2,
+    ease: "power3.out"})
+.fromTo(splitLines.lines, {
     y: 60,
     opacity: 0,
     rotateY: 50,
-    duration: 1.5,
+},{
+    y:0,opacity:1,rotateY:0,  duration: 1.5,
     ease: "power3.out",
     stagger: 0.3
 }, "-=1")
@@ -82,17 +73,40 @@ tl.from('.gallery-heading', {
     duration: 1,
     ease: "power3.out"
 }, "-=0.8")
-   })
+    imageGallery.forEach(div=>{
+        const images  = div.querySelectorAll(".gallery-image")
+        const container = div.querySelector(".gallery-image-wrapper")
+        console.log(container)
+        div.addEventListener("mouseenter",()=>{
+                gsap.killTweensOf([container, images])
+
+            gsap.to(container,{gridTemplateRows:"1fr",duration:0.65,ease:"power2.out",overwrite:'auto'})
+gsap.to(images,{opacity:1,stagger:0.14, scale:1,duration:0.7,y:0,ease:"power3.out",overwrite:"auto"})
+        })
+div.addEventListener("mouseleave",()=>{
+        gsap.killTweensOf([container, images])
+
+                gsap.to(container,{gridTemplateRows:"0fr",duration:0.6,ease:"power3.inOut",overwrite:"auto",delay:0.08})
+
+    gsap.to(images,{
+        opacity:0,stagger:{
+            each:0.08,from:'end'
+        },y:-25,scale:0.97,duration:0.45,ease:"power2.inOut",overwrite:"auto"
+    })
+})
+    })
+
    
+   },mainRef.value)
 })
 onUnmounted(() => {
   if (splitLines) splitLines.revert();
-  if (mm) mm.revert();
+  ctx.revert()
 });
 </script>
 
 <template>
-    <div class="px-3 md:px-8 lg:px-12 py-10 md:py-16 flex flex-col md:flex-row gap-8 lg:gap-16 gallery-container">
+    <div ref="mainRef" class="px-2 md:px-8 lg:px-12 py-10 md:py-16 flex flex-col md:flex-row gap-8 lg:gap-16 gallery-container">
 
         <!-- Left Content -->
         <div class="w-full md:w-[35%] lg:w-1/4 flex flex-col justify-between gap-6">
@@ -109,12 +123,14 @@ onUnmounted(() => {
                         From quiet corners to spaces made for gathering, explore interiors designed around the way you live.
                     </p>
                 </span>
+                <span class="overflow-hidden">
                   <span class=" gallery-button overflow-hidden">
                 <button
-                    class="px-6  py-2.5 cursor-pointer border border-black bg-black text-white rounded-full
+                    class="md:px-6  md:py-2.5 px-3 py-1 cursor-pointer border border-black bg-black text-white rounded-full
                     hover:bg-white hover:text-black transition-all duration-300 ease-in-out">
                     Learn More
                 </button>
+                </span>
             </span>
 
             </div>
@@ -123,7 +139,7 @@ onUnmounted(() => {
         </div>
 
         <!-- Categories -->
-        <ul class="flex flex-col gap-0 flex-1">
+        <ul class="flex flex-col gap-0 flex-1 min-w-0">
 
             <!-- Living -->
          <li
@@ -133,7 +149,7 @@ onUnmounted(() => {
     >
 
                 <div
-                    class="text-xl md:text-2xl font-medium font-body w-full px-2 md:px-6 flex items-center justify-between">
+                    class="text-lg gallery-trigger md:text-2xl font-medium font-body w-full px-2 md:px-6 flex items-center justify-between">
 
                     <h2 class="transition-transform duration-300 group-hover:translate-x-2">
                        {{item.title}}
@@ -142,16 +158,18 @@ onUnmounted(() => {
                     <ArrowLeft
                         class="gallery-arrow w-7 h-7 md:w-8 md:h-8 rotate-130 text-black transition-transform duration-300 group-hover:translate-x-1" />
                 </div>
-
+<div class="grid grid-rows-[0fr]  gallery-image-wrapper ">
+    <div class="overflow-hidden ">
                 <div
-                    class="flex gap-4 items-end justify-end pr-2 md:pr-6 pt-5 image-container overflow-hidden">
+                    class=" flex gap-1.5 m:gap-4 items-end justify-end md:pr-2 md:pr-6 pt-5">
 
-                    <img v-for="(image, index) in item.images" :key="index"
-                        class="w-[205px] h-0 opacity-0 object-cover gallery-image rounded-2xl"
+                    <img v-for="(image, imgIndex) in item.images" :key="imgIndex"
+                        class="md:w-[205px] h-[145px] w-[98px]  md:h-[260px] shrink-0 opacity-0 object-cover gallery-image rounded-2xl"
                        :src="image">
 
-                 
+                 </div>
 
+                </div>
                 </div>
             </li>
 
