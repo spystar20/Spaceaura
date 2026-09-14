@@ -40,6 +40,7 @@ const galleryItems = [
     }
 ]
    let ctx 
+   const mm = gsap.matchMedia()
 const mainRef = ref(null)
     let splitLines
 onMounted(async()=>{
@@ -47,9 +48,8 @@ await nextTick()
 if(document.fonts) await document.fonts.ready
     ctx=gsap.context(()=>{
 const imageGallery  = gsap.utils.toArray(".gallery-div")
-
-
-    if (splitLines) splitLines.revert()
+mm.add('(max-width:768px)',()=>{
+        if (splitLines) splitLines.revert()
             splitLines= new SplitType('.gallery-subheading',{types:'lines'})
 
     const tl = gsap.timeline({scrollTrigger:{trigger:mainRef.value,scrub:2,start:"top 90%",end:"top top",markers:true,once:true}})
@@ -95,8 +95,55 @@ div.addEventListener("mouseleave",()=>{
     })
 })
     })
+})
+mm.add('(min-width:767px)',()=>{
+            if (splitLines) splitLines.revert()
+            splitLines= new SplitType('.gallery-subheading',{types:'lines'})
 
-   
+    const tl = gsap.timeline({scrollTrigger:{trigger:mainRef.value,scrub:2,start:"top 90%",end:"top top",markers:true,once:true}})
+tl.fromTo('.gallery-heading', {
+    y: 120,
+    opacity: 0,
+},{y:0,opacity:1 ,duration: 2,
+    ease: "power3.out"})
+.fromTo(splitLines.lines, {
+    y: 60,
+    opacity: 0,
+    rotateY: 50,
+},{
+    y:0,opacity:1,rotateY:0,  duration: 1.5,
+    ease: "power3.out",
+    stagger: 0.3
+}, "-=1")
+.from('.gallery-button', {
+    y: 60,
+    opacity: 0,
+    duration: 1,
+    ease: "power3.out"
+}, "-=0.8")
+    imageGallery.forEach(div=>{
+        const images  = div.querySelectorAll(".gallery-image")
+        const container = div.querySelector(".gallery-image-wrapper")
+        console.log(container)
+        div.addEventListener("mouseenter",()=>{
+                gsap.killTweensOf([container, images])
+
+            gsap.to(container,{gridTemplateRows:"1fr",duration:0.65,ease:"power2.out",overwrite:'auto'})
+gsap.to(images,{opacity:1,stagger:0.14, scale:1,duration:0.7,y:0,ease:"power3.out",overwrite:"auto"})
+        })
+div.addEventListener("mouseleave",()=>{
+        gsap.killTweensOf([container, images])
+
+                gsap.to(container,{gridTemplateRows:"0fr",duration:0.6,ease:"power3.inOut",overwrite:"auto",delay:0.08})
+
+    gsap.to(images,{
+        opacity:0,stagger:{
+            each:0.08,from:'end'
+        },y:-25,scale:0.97,duration:0.45,ease:"power2.inOut",overwrite:"auto"
+    })
+})
+    })
+})
    },mainRef.value)
 })
 onUnmounted(() => {

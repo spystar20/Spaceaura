@@ -34,7 +34,6 @@ import CtaSection from '../../Components/CtaSection.vue';
       <CtaSection/>
 
 
-
     </div>
 
 
