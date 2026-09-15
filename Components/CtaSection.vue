@@ -31,7 +31,7 @@ const cardTl = gsap.timeline({scrollTrigger:{trigger:mainRef.value,start:'top 85
 }})
 
 cardTl.from('.cta-card',{y:40,duration:1,ease:"power3.out"})
-gsap.set('.cta-card-img',{
+gsap.set('.cta-card-image',{
     clipPath:'inset(100% 0% 0% 0%)'
 })
 gsap.set([
@@ -42,8 +42,8 @@ gsap.set([
     y: 25,
     opacity: 0
 });
-const innerTl = gsap.timeline({scrollTrigger:{trigger:mainRef.value,start:"top 120%",end:"top 45%",scrub:1.5,invalidateOnRefresh:true,markers:true}})
-innerTl.to('.cta-card-img',{
+const innerTl = gsap.timeline({scrollTrigger:{trigger:mainRef.value,start:"top top",end:"+=200px",scrub:1.5,invalidateOnRefresh:true,markers:true,once:true}})
+innerTl.to('.cta-card-image',{
     clipPath: "inset(0% 0% 0% 0%)",
     duration: 0.5,
     ease: "power2.out"})
@@ -64,7 +64,7 @@ innerTl.to('.cta-card-img',{
     opacity: 1,
     duration: 0.2,
     ease: "power3.out"
-}, "-=0.08");
+}, "-=0.1");
     },mainRef.value)
 
     requestAnimationFrame(() => {

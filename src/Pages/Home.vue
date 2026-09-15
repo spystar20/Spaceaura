@@ -21,13 +21,14 @@ import CtaSection from '../../Components/CtaSection.vue';
        <Hero/>
         <!-- about -->
        <About/>
+       
+        <!-- stats section -->
+   <StatSection/>
         <!-- approach -->
       <Approach/>
         <!-- project -->
         <Project/>
 
-        <!-- stats section -->
-   <StatSection/>
 
         <!-- Designed for Every Space -->
       <Gallery/>
