@@ -46,9 +46,11 @@ const galleryStage = ref(null)
 const activeGallery = ref(0)
 let galleryGroups
  function changeGallery(index){
-      console.log("hovered:", index)
-
-if(index===activeGallery.value)return
+if(index===activeGallery.value){
+    gsap.to(galleryGroups[index],{
+        opacity:1,duration:0.4,ease:"power2.out"
+    })
+}
 const current = galleryGroups[activeGallery.value]
 const next = galleryGroups[index]
   const currentImages = current.querySelectorAll('.desktop-gallery-image')
@@ -75,6 +77,15 @@ gsap.to(currentImages,{
   })
 activeGallery.value=index
  }
+ function hideGallery(){
+  if(!galleryGroups) return
+
+  gsap.to(galleryGroups,{
+    opacity:0,
+    duration:0.4,
+    ease:"power2.out"
+  })
+}
     let splitLines
 onMounted(async()=>{
 await nextTick()
@@ -176,7 +187,6 @@ images.forEach((image,index)=>{
 galleryGroups = galleryStage.value.querySelectorAll('.gallery-image-group')
 
 gsap.set(galleryGroups,{opacity:0})
-gsap.set(galleryGroups[0],{opacity:1})
 
 
 })
@@ -256,7 +266,7 @@ onUnmounted(() => {
             </li>
 
         </ul>
-        <div class="flex-1 relative">
+        <div class="flex-1 relative" v-on:mouseleave="hideGallery">
  <ul class="md:flex flex-col gap-0 flex-1 min-w-0 hidden">
 
             <!-- Living -->
