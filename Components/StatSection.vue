@@ -181,7 +181,7 @@ mm.add('(max-width:767px)',()=>{
 })
 </script>
 <template>
-    <div class="md:px-5 px-2 py-5 grid grid-cols-1 md:grid-cols-2 gap-6 statSection relative min-h-screen overflow-hidden">
+    <div id="about" class="md:px-5 px-2 py-5 grid grid-cols-1 md:grid-cols-2 gap-6 statSection relative min-h-screen overflow-hidden">
        <div
     class="w-full order-2 md:order-1 md:p-3 items-center gap-5 rounded-2xl bg-linear-to-b from-black to-main text-gray-100 grid md:grid-cols-2 h-[calc(100vh-40px)] overflow-hidden">
 

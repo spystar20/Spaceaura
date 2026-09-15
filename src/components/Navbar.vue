@@ -5,13 +5,21 @@ import gsap from 'gsap';
 const isOpen = ref(false)
 onMounted(()=>{
     // const tl = gsap.timeline()
-    gsap.from('.logo',{
-        xPercent:-100,ease:'sine',duration:0.8,scale:0
-    })
-    gsap.from('.nav',{
-                xPercent:100,ease:'sine',duration:0.8,scale:0
+  gsap.from('.logo',{
+  xPercent:-100,
+  opacity:0,
+  scale:0.8,
+  duration:0.8,
+  ease:'power3.out'
+})
 
-    })
+gsap.from('.nav',{
+  xPercent:100,
+  opacity:0,
+  scale:0.8,
+  duration:0.8,
+  ease:'power3.out'
+})
 })
 </script>
 
@@ -44,22 +52,26 @@ onMounted(()=>{
 
         <h2 class="text-4xl font-bold text-main uppercase">spaceaura</h2>
         <div @click="isOpen=!isOpen">
-             <XIcon  v-if="isOpen"/>
+             <XIcon  v-if="isOpen" />
         <MenuIcon v-else class="w-5 h-5" />
      
       </div>
     </div>
   
-      <ul  :class="['bg-white w-full absolute top-18 z-[999] items-center flex flex-col gap-4  font-body text-lg py-6 font-medium duration-300 ease-in transition-all ',
-      
-      isOpen ? 
-      'translate-y-0  opacity-100'
-      :'-translate-y-12 opacity-0 pointer-events-none']" >
-            <li class=" border-b">Home</li>
-            <li>Home</li>
-            <li>Home</li>
-            <li>Home</li>
-        </ul>
+   <ul
+  :class="[
+    'bg-white w-full absolute top-[72px] left-0 z-[999] flex flex-col items-center gap-4 font-body text-lg py-6 font-medium transition-all duration-300 ease-out',
+    isOpen
+      ? 'translate-y-0 opacity-100'
+      : '-translate-y-12 opacity-0 pointer-events-none'
+  ]"
+>
+<li><a href="#home" v-on:click="isOpen=!isOpen">Home</a></li>
+<li><a href="#about" v-on:click="isOpen=!isOpen">About</a></li>
+<li><a href="#projects" v-on:click="isOpen=!isOpen">Projects</a></li>
+<li><a href="#gallery" v-on:click="isOpen=!isOpen">Gallery</a></li>
+<li><a href="#contact" v-on:click="isOpen=!isOpen">Contact</a></li>
+</ul>
 
 </div>
 </template>

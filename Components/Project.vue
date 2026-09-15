@@ -41,7 +41,7 @@ onMounted(() => {
 .fromTo(".projectCard-textContainer",{y:20},{y:0},"<")
   });
 
- mm.add("(max-width: 767px)", () => {
+mm.add("(max-width: 767px)", () => {
 
   gsap.fromTo(
     ".project-heading",
@@ -56,10 +56,10 @@ onMounted(() => {
         trigger: ".project-heading",
         start: "top 90%",
         end: "top 60%",
-        scrub: true,
+        scrub: true
       }
     }
-  );
+  )
 
   gsap.fromTo(
     ".project-desc",
@@ -74,23 +74,40 @@ onMounted(() => {
         trigger: ".project-desc",
         start: "top 90%",
         end: "top 60%",
-        scrub: true,
+        scrub: true
       }
     }
-  );
-projectBox.forEach((card)=>{
-  gsap.fromTo(card,{scaleY:0,opacity:0,transformOrigin:"center bottom"},{scaleY:1,opacity:100,scrollTrigger:{
-    trigger:card,start:"top 90%",end:"top 50%",scrub:true,markers:true
-  }})
-})
+  )
 
-});
+  projectBox.forEach((card) => {
+    gsap.fromTo(
+      card,
+      {
+      
+        opacity: 0,
+        scaleY: 0.95
+      },
+      {
+       
+        opacity: 1,
+        scaleY: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: card,
+          start: "top 90%",
+          end: "top 50%",
+          scrub: true
+        }
+      }
+    )
+  })
+})
 
 })
 </script>
 
 <template>
-  <div class="px-2 py-5 md:px-5 project-container">
+  <div id="projects" class="px-2 py-5 md:px-5 project-container">
     <!-- heading -->
     <div class="flex flex-col md:flex-row gap-3 md:gap-12 justify-between  md:items-start w-full">
       <div class="md:flex-5 overflow-hidden">

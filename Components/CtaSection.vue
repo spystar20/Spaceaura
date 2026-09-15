@@ -42,7 +42,7 @@ gsap.set([
     y: 25,
     opacity: 0
 });
-const innerTl = gsap.timeline({scrollTrigger:{trigger:mainRef.value,start:"top top",end:"+=200px",scrub:1.5,invalidateOnRefresh:true,markers:true,once:true}})
+const innerTl = gsap.timeline({scrollTrigger:{trigger:mainRef.value,start:"top top",end:"+=200px",scrub:1.5,invalidateOnRefresh:true,once:true}})
 innerTl.to('.cta-card-image',{
     clipPath: "inset(0% 0% 0% 0%)",
     duration: 0.5,

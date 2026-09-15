@@ -199,7 +199,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div ref="mainRef" class="px-2 md:px-8 lg:px-12 py-10 md:py-16 flex flex-col md:flex-row gap-8 lg:gap-8 gallery-container">
+    <div id="gallery" ref="mainRef" class="px-2 md:px-8 lg:px-12 py-10 md:py-16 flex flex-col md:flex-row gap-8 lg:gap-8 gallery-container">
 
         <!-- Left Content -->
         <div class="w-full md:w-[35%] lg:w-1/4 flex flex-col justify-between gap-6">

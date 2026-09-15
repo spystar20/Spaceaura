@@ -26,13 +26,13 @@ stagger:0.12,y:60,opacity:0,duration:1.2,rotateY:90,scale:0.5,
   opacity: 0,
   duration: 0.5,
   ease: 'back.out(1.7)'
-})
+},0)
 .from('.gmail', {
   scale: 0,
   opacity: 0,
   duration: 0.5,
   ease: 'back.out(1.7)'
-}, '-=0.25')
+}, '-=1.2')
 .from('.linkedin', {
   scale: 0,
   opacity: 0,
@@ -49,7 +49,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div  ref="mainRef" class="bg-black  w-full p-5  md:py-16 md:px-12 text-white flex flex-col md:flex-row justify-between gap-5 md:items-center">
+    <div id="contact"  ref="mainRef" class="bg-black  w-full p-5  md:py-16 md:px-12 text-white flex flex-col md:flex-row justify-between gap-5 md:items-center">
         <div class="w-full">
           <span class="overflow-hidden block">
         <h2 class="font-footer footer-heading text-5xl md:text-9xl w-full text-white uppercase leading-none ">spaceaura</h2>
@@ -59,9 +59,14 @@ onUnmounted(() => {
 
         </div>
            <div class="text-4xl flex md:flex-col gap-1 cursor-pointer">
-  <Icon icon="mdi:github"  class="github"/>
-    <Icon icon="mdi:gmail"  class="gmail" />
-  <Icon icon="mdi:linkedin" class="linkedin" />
+            <a href="https://github.com/spystar20"     rel="noopener noreferrer"
+ target="_blank">
+  <Icon  icon="mdi:github"  class="github"/></a>
+  <a href="mailto:santoshiwebdev@gmail.com"     rel="noopener noreferrer"
+ target="_blank">
+    <Icon icon="mdi:gmail"  class="gmail" /></a>
+ <a href="www.linkedin.com/in/santoshi-191094376"     rel="noopener noreferrer"
+ target="_blank"> <Icon icon="mdi:linkedin" class="linkedin" /></a>
 
     </div>
     </div>

@@ -32,7 +32,7 @@ onMounted(async() => {
 
 </script>
 <template>
-<div class="w-full hero  flex items-center justify-center relative  rounded-2xl md:rounded-4xl px-2 md:px-5 box-border ">
+<div id="home" class="w-full hero  flex items-center justify-center relative  rounded-2xl md:rounded-4xl px-2 md:px-5 box-border ">
             <div 
                 class="bg-black w-full  rounded-2xl md:rounded-4xl  bg-cover bg-center overflow-hidden">
                 <img src="https://i.pinimg.com/1200x/21/f5/9c/21f59c5b923c8f866d7da4a87dda0b4d.jpg" class="hero-img object-cover w-full md:h-[87vh] h-[86vh] overflow-hidden" alt="">

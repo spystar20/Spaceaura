@@ -81,7 +81,6 @@ mm.add("(min-width: 768px)", () => {
             scrub: true,
             pin: false,
             pinSpacing: true,
-            markers: true
         }
     })
 
