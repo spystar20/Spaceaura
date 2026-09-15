@@ -77,17 +77,17 @@ ctx.revert()
 </script>
 <template>
       <div class="w-full cta-container" ref="mainRef" >
-            <div class=" hero-img w-full min-h-[1024px] relative flex items-center justify-start  "
+            <div class=" hero-img w-full h-[700px] md:min-h-[1024px] relative flex items-center overflow-hidden justify-start  "
                 >
                
                 <div class="absolute inset-0  overflow-hidden">
                      <img class="cta-img h-full w-full bg-center bg-no-repeat object-cover" src="https://i.pinimg.com/1200x/1e/6b/a2/1e6ba2c54b4b7333d8db9e3a43cda791.jpg" alt="">
                 </div>
                 <div  class="absolute inset-0  bg-linear-to-bl from-white/10 to-black/45"></div>
-    <div class="bg-white/90 cta-card flex flex-col rounded-xl md:p-4 w-[300px] ml-6 md:ml-16 lg:ml-24 z-[12] overflow-hidden">
-    <div class="cta-card-image overflow-hidden rounded-xl">
+<div class="bg-white/90 cta-card flex flex-col rounded-xl md:p-4 w-[270px] md:w-[300px] ml-6 md:ml-16 lg:ml-24 z-[12] overflow-hidden">   
+     <div class="cta-card-image overflow-hidden rounded-xl">
         <img
-            class="rounded-xl aspect-square p-1 w-full object-cover"
+            class="rounded-xl  p-1 w-full object-cover"
             src="https://i.pinimg.com/736x/b0/5f/dd/b05fdd196a902ebb945f3f085458aa9b.jpg"
             alt=""
         >

@@ -16,12 +16,30 @@ onMounted(async ()=>{
     splitText = new SplitType(
       ".footer-heading",{types:'chars'}
     )
-    const tl = gsap.timeline({scrollTrigger:{trigger:mainRef.value,start:'top 80%' ,end:'top 50%' ,invalidateOnRefresh:true}})
+    const tl = gsap.timeline({scrollTrigger:{trigger:mainRef.value,start:'top 80%',invalidateOnRefresh:true}})
 tl.from(splitText.chars,{
-  filter:'blur(20px)',stagger:0.12,xPercent:-160,opacity:0,duration:0.8,
+stagger:0.12,y:60,opacity:0,duration:1.2,rotateY:90,scale:0.5,
   ease:'power3.out'
-
 })
+.from('.github', {
+  scale: 0,
+  opacity: 0,
+  duration: 0.5,
+  ease: 'back.out(1.7)'
+})
+.from('.gmail', {
+  scale: 0,
+  opacity: 0,
+  duration: 0.5,
+  ease: 'back.out(1.7)'
+}, '-=0.25')
+.from('.linkedin', {
+  scale: 0,
+  opacity: 0,
+  duration: 0.5,
+  ease: 'back.out(1.7)'
+}, '-=0.25')
+
   },mainRef.value)
 })
 onUnmounted(() => {
@@ -40,10 +58,10 @@ onUnmounted(() => {
         <p class="font-body capitalize">@{{year }} created By Santoshi</p>
 
         </div>
-           <div class="text-3xl flex md:flex-col gap-1 ">
-  <Icon icon="mdi:github"  />
-    <Icon icon="mdi:gmail"  />
-  <Icon icon="mdi:linkedin" />
+           <div class="text-4xl flex md:flex-col gap-1 cursor-pointer">
+  <Icon icon="mdi:github"  class="github"/>
+    <Icon icon="mdi:gmail"  class="gmail" />
+  <Icon icon="mdi:linkedin" class="linkedin" />
 
     </div>
     </div>

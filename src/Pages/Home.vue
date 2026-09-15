@@ -20,16 +20,16 @@ import CtaSection from '../../Components/CtaSection.vue';
     <Hero />
 
     <!-- 2. About: Builds context right after the hook -->
-    <!-- <About /> -->
+    <About />
 
     <!-- 3. Project / Portfolio: Shows proof of work early to build interest -->
-    <!-- <Project /> -->
+    <Project />
 
     <!-- 4. StatSection: Quantifies success / adds social proof -->
-    <!-- <StatSection /> -->
+    <StatSection />
 
     <!-- 5. Approach: Explains process ("How we work") after showing results -->
-    <!-- <Approach /> -->
+    <Approach />
 
     <!-- 6. Gallery: Rich visual section ("Designed for Every Space") -->
     <Gallery />

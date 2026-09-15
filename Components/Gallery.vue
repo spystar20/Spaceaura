@@ -91,7 +91,7 @@ onMounted(async()=>{
 await nextTick()
 if(document.fonts) await document.fonts.ready
     ctx=gsap.context(()=>{
-mm.add('(max-width:768px)',()=>{
+mm.add('(max-width:767px)',()=>{
         if (splitLines) splitLines.revert()
             splitLines= new SplitType('.gallery-subheading',{types:'lines'})
 const imageGallery  = gsap.utils.toArray(".gallery-div")
@@ -140,11 +140,11 @@ div.addEventListener("mouseleave",()=>{
 })
     })
 })
-mm.add('(min-width:767px)',()=>{
+mm.add('(min-width:768px)',()=>{
             if (splitLines) splitLines.revert()
             splitLines= new SplitType('.gallery-subheading',{types:'lines'})
 
-    const tl = gsap.timeline({scrollTrigger:{trigger:mainRef.value,scrub:2,start:"top 90%",end:"top top",once:true}})
+    const tl = gsap.timeline({scrollTrigger:{trigger:mainRef.value,scrub:2,start:"top 90%",end:"top top"}})
 tl.fromTo('.gallery-heading', {
     y: 120,
     opacity: 0,
@@ -204,7 +204,7 @@ onUnmounted(() => {
         <!-- Left Content -->
         <div class="w-full md:w-[35%] lg:w-1/4 flex flex-col justify-between gap-6">
             <div class="flex flex-col gap-5">
-                <span class="overflow-hidden">
+                <span class="overflow-hidden block">
                     <h2
                         class="gallery-heading font-bold font-heading text-4xl md:text-4xl lg:text-6xl leading-[0.95] tracking-tight bg-linear-to-r from-black to-main text-transparent bg-clip-text">
                         Designed for Every Space
